@@ -1,4 +1,4 @@
-module github.com/glifio/filecoin-types
+module github.com/glifio/filecoin-descriptors
 
 go 1.18
 
