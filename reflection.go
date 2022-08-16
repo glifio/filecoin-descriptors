@@ -82,7 +82,7 @@ func GetDataType(t reflect.Type) DataType {
 		return dataType
 
 	case reflect.Func:
-		dataType.Type = DataTypeFunc
+		dataType.Type = DataTypeFunction
 		dataType.IsVariadic = t.IsVariadic()
 		for i := 0; i < t.NumIn(); i++ {
 			dataType.Params = append(dataType.Params, GetDataType(t.In(i)))

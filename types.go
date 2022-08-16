@@ -23,12 +23,12 @@ type DataType struct {
 }
 
 const (
-	DataTypeBool   = "bool"
-	DataTypeNumber = "number"
-	DataTypeString = "string"
-	DataTypeArray  = "array"
-	DataTypeObject = "object"
-	DataTypeFunc   = "function"
+	DataTypeBool     = "bool"
+	DataTypeNumber   = "number"
+	DataTypeString   = "string"
+	DataTypeArray    = "array"
+	DataTypeObject   = "object"
+	DataTypeFunction = "function"
 )
 
 type ActorMethodMap = map[string]ActorMethod
