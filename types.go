@@ -25,6 +25,7 @@ const (
 	DataTypeString = "string"
 	DataTypeArray  = "array"
 	DataTypeObject = "object"
+	DataTypeFunc   = "function"
 )
 
 type ActorMethodMap = map[string]ActorMethod
