@@ -91,6 +91,11 @@ func GetDataType(t reflect.Type) DataType {
 			dataType.Returns = append(dataType.Returns, GetDataType(t.Out(i)))
 		}
 		return dataType
+
+	case reflect.Interface:
+		dataType.Type = DataTypeInterface
+		fmt.Printf("Unhandled interface reflection for: %s\n", t.String())
+		return dataType
 	}
 
 	panic(fmt.Sprintf("Unhandled type with string: %s, name: %s, kind: %s", t.String(), t.Name(), t.Kind().String()))
