@@ -56,7 +56,7 @@ func main() {
 	for name, reflectableActor := range reflectableActors {
 
 		// State reflection
-		stateType := reflect.TypeOf(reflectableActor.State).Elem()
+		stateType := reflect.TypeOf(reflectableActor.State)
 		stateDataType := GetDataType(stateType)
 		if stateDataType.Children == nil {
 			log.Fatalf("%s actor state DataType should have Children", name)
