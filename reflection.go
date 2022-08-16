@@ -80,7 +80,18 @@ func GetDataType(t reflect.Type) DataType {
 			dataType.Children[f.Name] = GetDataType(f.Type)
 		}
 		return dataType
+
+	case reflect.Func:
+		dataType.Type = DataTypeFunc
+		dataType.IsVariadic = t.IsVariadic()
+		for i := 0; i < t.NumIn(); i++ {
+			dataType.Params = append(dataType.Params, GetDataType(t.In(i)))
+		}
+		for i := 0; i < t.NumOut(); i++ {
+			dataType.Returns = append(dataType.Returns, GetDataType(t.Out(i)))
+		}
+		return dataType
 	}
 
-	panic(fmt.Sprintf("Unhandled type: %s", t.String()))
+	panic(fmt.Sprintf("Unhandled type with string: %s, name: %s, kind: %s", t.String(), t.Name(), t.Kind().String()))
 }

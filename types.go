@@ -13,10 +13,13 @@ type ActorCodeMap = map[ActorName]ActorCode
 type PropName = string
 type DataTypeMap = map[PropName]DataType
 type DataType struct {
-	Name     string
-	Type     string
-	Contains *DataType   `json:",omitempty"` // For array type
-	Children DataTypeMap `json:",omitempty"` // For object type
+	Name       string
+	Type       string
+	Contains   *DataType   `json:",omitempty"` // For array type
+	Children   DataTypeMap `json:",omitempty"` // For object type
+	Params     []DataType  `json:",omitempty"` // For function type
+	Returns    []DataType  `json:",omitempty"` // For function type
+	IsVariadic bool        `json:",omitempty"` // For function type
 }
 
 const (
