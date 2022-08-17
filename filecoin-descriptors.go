@@ -58,8 +58,8 @@ func main() {
 		// State reflection
 		stateType := reflect.TypeOf(reflectableActor.State)
 		stateDataType := GetDataType(stateType)
-		if stateDataType.Children == nil {
-			log.Fatalf("%s actor state DataType should have Children", name)
+		if stateDataType.Type != DataTypeObject {
+			log.Fatalf("%s actor state is not an object", name)
 		}
 
 		// Methods reflection
