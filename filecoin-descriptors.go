@@ -64,6 +64,13 @@ func main() {
 
 		// Methods reflection
 		actorMethodsDescriptor := ActorMethodMap{}
+		for key, method := range reflectableActor.Methods {
+			methodType := reflect.TypeOf(method)
+			methodDataType := GetDataType(methodType)
+			if len(methodDataType.Returns) != 1 {
+				log.Fatalf("%s actor method %s has multiple return values", name, method)
+			}
+		}
 
 		// Set actor descriptor
 		actorDescriptorMap[name] = ActorDescriptor{
