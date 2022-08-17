@@ -17,7 +17,7 @@ var bitFieldType = reflect.TypeOf((*bitfield.BitField)(nil)).Elem()
 var cidType = reflect.TypeOf((*cid.Cid)(nil)).Elem()
 
 func GetDataType(t reflect.Type) DataType {
-	var dataType = DataType{}
+	var dataType DataType
 	dataType.Name = t.Name()
 
 	// Handle special types
