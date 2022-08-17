@@ -69,12 +69,30 @@ func main() {
 			methodType := reflect.TypeOf(method)
 			methodDataType := GetDataType(methodType)
 
-			// Return value
+			// Get method parameter
+			paramsCount := len(methodDataType.Params)
+			if paramsCount != 3 {
+				log.Fatalf("%s actor method %s has %d parameters, expected 3", name, method, paramsCount)
+			}
+			firstParamName := methodDataType.Params[0].Name
+			if firstParamName != "Actor" {
+				log.Fatalf("%s actor method %s has %s as first parameter, should be Actor", name, method, firstParamName)
+			}
+			secondParamName := methodDataType.Params[1].Name
+			if secondParamName != "Runtime" {
+				log.Fatalf("%s actor method %s has %s as first parameter, should be Runtime", name, method, secondParamName)
+			}
+			actorMethod.Param = methodDataType.Params[2]
+
+			// Get method return value
 			returnsCount := len(methodDataType.Returns)
 			if returnsCount != 1 {
 				log.Fatalf("%s actor method %s has %d return values, expected 1", name, method, returnsCount)
 			}
 			actorMethod.Return = methodDataType.Returns[0]
+
+			// Store method in map
+			actorMethodMap[key] = actorMethod
 		}
 
 		// Set actor descriptor
