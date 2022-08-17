@@ -22,6 +22,15 @@ var networks = []Network{
 
 func main() {
 	/*
+	 * Preparation
+	 */
+
+	// Create output directory if not exists
+	if err := os.MkdirAll("output", os.ModePerm); err != nil {
+		log.Fatalf("Failed to create output directory: %v", err)
+	}
+
+	/*
 	 * Get actor codes
 	 */
 
@@ -49,7 +58,7 @@ func main() {
 	}
 
 	/*
-	 * Get actor descriptors
+	 * Actor descriptors
 	 */
 
 	var actorDescriptorMap = ActorDescriptorMap{}
@@ -102,28 +111,37 @@ func main() {
 		}
 	}
 
-	// Marshal actor descriptors to JSON
-	actorDescriptorJson, err := json.MarshalIndent(actorDescriptorMap, "", "  ")
-	if err != nil {
-		log.Fatalf("Failed to marshal actor descriptors to JSON: %v", err)
+	// Write actor descriptors to JSON file
+	if err := writeJsonFile(actorDescriptorMap, "actor-descriptors"); err != nil {
+		log.Fatalf("Failed to write actor descriptors to JSON file: %v", err)
 	}
 
-	// Create output directory
-	if err = os.MkdirAll("output", os.ModePerm); err != nil {
-		log.Fatalf("Failed to create output directory: %v", err)
+	/*
+	 * Done
+	 */
+
+	fmt.Println("Done")
+}
+
+func writeJsonFile(data interface{}, filename string) error {
+
+	// Marshal data to JSON
+	dataJson, err := json.MarshalIndent(data, "", "  ")
+	if err != nil {
+		return err
 	}
 
-	// Create file for actor descriptors
-	f, err := os.Create("output/actor-descriptors.json")
+	// Create file
+	f, err := os.Create(fmt.Sprintf("output/%s.json", filename))
 	if err != nil {
-		log.Fatalf("Failed to create actor descriptors file: %v", err)
+		return err
 	}
 	defer f.Close()
 
-	// Write actor descriptors to file
-	if _, err = f.Write(actorDescriptorJson); err != nil {
-		log.Fatalf("Failed to write actor descriptors to file: %v", err)
+	// Write file
+	if _, err = f.Write(dataJson); err != nil {
+		return err
 	}
 
-	fmt.Println("Successfully generated actor descriptors file")
+	return nil
 }
