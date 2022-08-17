@@ -17,7 +17,7 @@ var bitFieldType = reflect.TypeOf((*bitfield.BitField)(nil)).Elem()
 var cidType = reflect.TypeOf((*cid.Cid)(nil)).Elem()
 
 func GetDataType(t reflect.Type) DataType {
-	var dataType = DataType{}
+	var dataType DataType
 	dataType.Name = t.Name()
 
 	// Handle special types
@@ -80,7 +80,23 @@ func GetDataType(t reflect.Type) DataType {
 			dataType.Children[f.Name] = GetDataType(f.Type)
 		}
 		return dataType
+
+	case reflect.Func:
+		dataType.Type = DataTypeFunction
+		dataType.IsVariadic = t.IsVariadic()
+		for i := 0; i < t.NumIn(); i++ {
+			dataType.Params = append(dataType.Params, GetDataType(t.In(i)))
+		}
+		for i := 0; i < t.NumOut(); i++ {
+			dataType.Returns = append(dataType.Returns, GetDataType(t.Out(i)))
+		}
+		return dataType
+
+	case reflect.Interface:
+		dataType.Type = DataTypeInterface
+		fmt.Printf("Unhandled interface reflection for: %s\n", t.String())
+		return dataType
 	}
 
-	panic(fmt.Sprintf("Unhandled type: %s", t.String()))
+	panic(fmt.Sprintf("Unhandled type with string: %s, name: %s, kind: %s", t.String(), t.Name(), t.Kind().String()))
 }

@@ -28,7 +28,7 @@ func main() {
 	for _, network := range networks {
 
 		// Open Lotus API for network
-		lotus := Lotus{}
+		var lotus Lotus
 		if err := lotus.Open(network); err != nil {
 			log.Fatalf("Failed to start Lotus API: %s", err)
 		}
@@ -56,19 +56,49 @@ func main() {
 	for name, reflectableActor := range reflectableActors {
 
 		// State reflection
-		stateType := reflect.TypeOf(reflectableActor.State).Elem()
+		stateType := reflect.TypeOf(reflectableActor.State)
 		stateDataType := GetDataType(stateType)
-		if stateDataType.Children == nil {
-			log.Fatalf("%s actor state DataType should have Children", name)
+		if stateDataType.Type != DataTypeObject {
+			log.Fatalf("%s actor state is not an object", name)
 		}
 
 		// Methods reflection
-		actorMethodsDescriptor := ActorMethodMap{}
+		var actorMethodMap = ActorMethodMap{}
+		for key, method := range reflectableActor.Methods {
+			var actorMethod ActorMethod
+			methodType := reflect.TypeOf(method)
+			methodDataType := GetDataType(methodType)
+
+			// Get method parameter
+			paramsCount := len(methodDataType.Params)
+			if paramsCount != 3 {
+				log.Fatalf("%s actor method %s has %d parameters, expected 3", name, method, paramsCount)
+			}
+			firstParamName := methodDataType.Params[0].Name
+			if firstParamName != "Actor" {
+				log.Fatalf("%s actor method %s has %s as first parameter, should be Actor", name, method, firstParamName)
+			}
+			secondParamName := methodDataType.Params[1].Name
+			if secondParamName != "Runtime" {
+				log.Fatalf("%s actor method %s has %s as first parameter, should be Runtime", name, method, secondParamName)
+			}
+			actorMethod.Param = methodDataType.Params[2]
+
+			// Get method return value
+			returnsCount := len(methodDataType.Returns)
+			if returnsCount != 1 {
+				log.Fatalf("%s actor method %s has %d return values, expected 1", name, method, returnsCount)
+			}
+			actorMethod.Return = methodDataType.Returns[0]
+
+			// Store method in map
+			actorMethodMap[key] = actorMethod
+		}
 
 		// Set actor descriptor
 		actorDescriptorMap[name] = ActorDescriptor{
 			State:   stateDataType.Children,
-			Methods: actorMethodsDescriptor,
+			Methods: actorMethodMap,
 		}
 	}
 

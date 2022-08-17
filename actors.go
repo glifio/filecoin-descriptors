@@ -138,7 +138,6 @@ var reflectableActors = map[ActorName]ReflectableActor{
 			"4": powerActor.Actor.EnrollCronEvent,
 			"5": powerActor.Actor.CronTick,
 			"6": powerActor.Actor.UpdatePledgeTotal,
-			"7": nil,
 			"8": powerActor.Actor.SubmitPoRepForBulkVerify,
 			"9": powerActor.Actor.CurrentTotalPower,
 		},
