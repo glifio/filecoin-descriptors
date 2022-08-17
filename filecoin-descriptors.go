@@ -28,7 +28,7 @@ func main() {
 	for _, network := range networks {
 
 		// Open Lotus API for network
-		lotus := Lotus{}
+		var lotus Lotus
 		if err := lotus.Open(network); err != nil {
 			log.Fatalf("Failed to start Lotus API: %s", err)
 		}
