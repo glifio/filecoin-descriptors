@@ -37,7 +37,7 @@ func DecodeNodeCBOR(data []byte) (datamodel.Node, error) {
 }
 
 func DecodeHamtNodeCBOR(data []byte) (*hamt.Node, error) {
-	node := hamt.Node{}
+	var node hamt.Node
 	if err := node.UnmarshalCBOR(bytes.NewReader(data)); err != nil {
 		return nil, err
 	}
@@ -45,11 +45,11 @@ func DecodeHamtNodeCBOR(data []byte) (*hamt.Node, error) {
 }
 
 func DecodeHamtKvCBOR(data []byte) (*hamt.KV, error) {
-	node := hamt.KV{}
-	if err := node.UnmarshalCBOR(bytes.NewReader(data)); err != nil {
+	var kv hamt.KV
+	if err := kv.UnmarshalCBOR(bytes.NewReader(data)); err != nil {
 		return nil, err
 	}
-	return &node, nil
+	return &kv, nil
 }
 
 func PrintNode(node datamodel.Node, name string, indent int) {
