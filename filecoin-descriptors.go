@@ -63,7 +63,7 @@ func main() {
 		}
 
 		// Methods reflection
-		actorMethodsDescriptor := ActorMethodMap{}
+		var actorMethodMap = ActorMethodMap{}
 		for key, method := range reflectableActor.Methods {
 			methodType := reflect.TypeOf(method)
 			methodDataType := GetDataType(methodType)
@@ -75,7 +75,7 @@ func main() {
 		// Set actor descriptor
 		actorDescriptorMap[name] = ActorDescriptor{
 			State:   stateDataType.Children,
-			Methods: actorMethodsDescriptor,
+			Methods: actorMethodMap,
 		}
 	}
 
