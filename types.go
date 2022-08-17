@@ -34,8 +34,8 @@ const (
 
 type ActorMethodMap = map[string]ActorMethod
 type ActorMethod = struct {
-	Params DataTypeMap `json:",omitempty"`
-	Return DataType    `json:",omitempty"`
+	Param  DataType `json:",omitempty"`
+	Return DataType `json:",omitempty"`
 }
 
 type ActorDescriptorMap = map[ActorName]ActorDescriptor
