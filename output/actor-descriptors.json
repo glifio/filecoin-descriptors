@@ -8,6 +8,7 @@
     },
     "Methods": {
       "1": {
+        "Name": "Constructor",
         "Param": {
           "Name": "Address",
           "Type": "string"
@@ -18,6 +19,7 @@
         }
       },
       "2": {
+        "Name": "PubkeyAddress",
         "Param": {
           "Name": "EmptyValue",
           "Type": "object"
@@ -52,6 +54,7 @@
     },
     "Methods": {
       "1": {
+        "Name": "Constructor",
         "Param": {
           "Name": "ConstructorParams",
           "Type": "object",
@@ -82,6 +85,7 @@
         }
       },
       "2": {
+        "Name": "EpochTick",
         "Param": {
           "Name": "EmptyValue",
           "Type": "object"
@@ -116,6 +120,7 @@
     },
     "Methods": {
       "1": {
+        "Name": "Constructor",
         "Param": {
           "Name": "ConstructorParams",
           "Type": "object",
@@ -132,6 +137,7 @@
         }
       },
       "2": {
+        "Name": "Exec",
         "Param": {
           "Name": "ExecParams",
           "Type": "object",
@@ -216,6 +222,7 @@
     },
     "Methods": {
       "1": {
+        "Name": "Constructor",
         "Param": {
           "Name": "ConstructorParams",
           "Type": "object",
@@ -248,6 +255,7 @@
         }
       },
       "2": {
+        "Name": "Propose",
         "Param": {
           "Name": "ProposeParams",
           "Type": "object",
@@ -302,6 +310,7 @@
         }
       },
       "3": {
+        "Name": "Approve",
         "Param": {
           "Name": "TxnIDParams",
           "Type": "object",
@@ -344,6 +353,7 @@
         }
       },
       "4": {
+        "Name": "Cancel",
         "Param": {
           "Name": "TxnIDParams",
           "Type": "object",
@@ -368,6 +378,7 @@
         }
       },
       "5": {
+        "Name": "AddSigner",
         "Param": {
           "Name": "AddSignerParams",
           "Type": "object",
@@ -388,6 +399,7 @@
         }
       },
       "6": {
+        "Name": "RemoveSigner",
         "Param": {
           "Name": "RemoveSignerParams",
           "Type": "object",
@@ -408,6 +420,7 @@
         }
       },
       "7": {
+        "Name": "SwapSigner",
         "Param": {
           "Name": "SwapSignerParams",
           "Type": "object",
@@ -428,6 +441,7 @@
         }
       },
       "8": {
+        "Name": "ChangeNumApprovalsThreshold",
         "Param": {
           "Name": "ChangeNumApprovalsThresholdParams",
           "Type": "object",
@@ -444,6 +458,7 @@
         }
       },
       "9": {
+        "Name": "LockBalance",
         "Param": {
           "Name": "LockBalanceParams",
           "Type": "object",
@@ -504,6 +519,7 @@
     },
     "Methods": {
       "1": {
+        "Name": "Constructor",
         "Param": {
           "Name": "ConstructorParams",
           "Type": "object",
@@ -524,6 +540,7 @@
         }
       },
       "2": {
+        "Name": "UpdateChannelState",
         "Param": {
           "Name": "UpdateChannelStateParams",
           "Type": "object",
@@ -644,6 +661,7 @@
         }
       },
       "3": {
+        "Name": "Settle",
         "Param": {
           "Name": "EmptyValue",
           "Type": "object"
@@ -654,6 +672,7 @@
         }
       },
       "4": {
+        "Name": "Collect",
         "Param": {
           "Name": "EmptyValue",
           "Type": "object"
@@ -724,6 +743,7 @@
     },
     "Methods": {
       "1": {
+        "Name": "Constructor",
         "Param": {
           "Name": "FilecoinNumber",
           "Type": "string"
@@ -734,6 +754,7 @@
         }
       },
       "2": {
+        "Name": "AwardBlockReward",
         "Param": {
           "Name": "AwardBlockRewardParams",
           "Type": "object",
@@ -762,6 +783,7 @@
         }
       },
       "3": {
+        "Name": "ThisEpochReward",
         "Param": {
           "Name": "EmptyValue",
           "Type": "object"
@@ -792,6 +814,7 @@
         }
       },
       "4": {
+        "Name": "UpdateNetworkKPI",
         "Param": {
           "Name": "FilecoinNumber",
           "Type": "string"
@@ -888,6 +911,7 @@
     },
     "Methods": {
       "1": {
+        "Name": "Constructor",
         "Param": {
           "Name": "EmptyValue",
           "Type": "object"
@@ -898,6 +922,7 @@
         }
       },
       "2": {
+        "Name": "AddBalance",
         "Param": {
           "Name": "Address",
           "Type": "string"
@@ -908,6 +933,7 @@
         }
       },
       "3": {
+        "Name": "WithdrawBalance",
         "Param": {
           "Name": "WithdrawBalanceParams",
           "Type": "object",
@@ -928,6 +954,7 @@
         }
       },
       "4": {
+        "Name": "PublishStorageDeals",
         "Param": {
           "Name": "PublishStorageDealsParams",
           "Type": "object",
@@ -1056,6 +1083,7 @@
         }
       },
       "5": {
+        "Name": "VerifyDealsForActivation",
         "Param": {
           "Name": "VerifyDealsForActivationParams",
           "Type": "object",
@@ -1114,6 +1142,7 @@
         }
       },
       "6": {
+        "Name": "ActivateDeals",
         "Param": {
           "Name": "ActivateDealsParams",
           "Type": "object",
@@ -1138,6 +1167,7 @@
         }
       },
       "7": {
+        "Name": "OnMinerSectorsTerminate",
         "Param": {
           "Name": "OnMinerSectorsTerminateParams",
           "Type": "object",
@@ -1162,6 +1192,7 @@
         }
       },
       "8": {
+        "Name": "ComputeDataCommitment",
         "Param": {
           "Name": "ComputeDataCommitmentParams",
           "Type": "object",
@@ -1212,6 +1243,7 @@
         }
       },
       "9": {
+        "Name": "CronTick",
         "Param": {
           "Name": "EmptyValue",
           "Type": "object"
@@ -1334,6 +1366,7 @@
     },
     "Methods": {
       "1": {
+        "Name": "Constructor",
         "Param": {
           "Name": "MinerConstructorParams",
           "Type": "object",
@@ -1386,6 +1419,7 @@
         }
       },
       "10": {
+        "Name": "DeclareFaults",
         "Param": {
           "Name": "DeclareFaultsParams",
           "Type": "object",
@@ -1424,6 +1458,7 @@
         }
       },
       "11": {
+        "Name": "DeclareFaultsRecovered",
         "Param": {
           "Name": "DeclareFaultsRecoveredParams",
           "Type": "object",
@@ -1462,6 +1497,7 @@
         }
       },
       "12": {
+        "Name": "OnDeferredCronEvent",
         "Param": {
           "Name": "DeferredCronEventParams",
           "Type": "object",
@@ -1510,6 +1546,7 @@
         }
       },
       "13": {
+        "Name": "CheckSectorProven",
         "Param": {
           "Name": "CheckSectorProvenParams",
           "Type": "object",
@@ -1526,6 +1563,7 @@
         }
       },
       "14": {
+        "Name": "ApplyRewards",
         "Param": {
           "Name": "ApplyRewardParams",
           "Type": "object",
@@ -1546,6 +1584,7 @@
         }
       },
       "15": {
+        "Name": "ReportConsensusFault",
         "Param": {
           "Name": "ReportConsensusFaultParams",
           "Type": "object",
@@ -1582,6 +1621,7 @@
         }
       },
       "16": {
+        "Name": "WithdrawBalance",
         "Param": {
           "Name": "WithdrawBalanceParams",
           "Type": "object",
@@ -1598,6 +1638,7 @@
         }
       },
       "17": {
+        "Name": "ConfirmSectorProofsValid",
         "Param": {
           "Name": "ConfirmSectorProofsParams",
           "Type": "object",
@@ -1650,6 +1691,7 @@
         }
       },
       "18": {
+        "Name": "ChangeMultiaddrs",
         "Param": {
           "Name": "ChangeMultiaddrsParams",
           "Type": "object",
@@ -1674,6 +1716,7 @@
         }
       },
       "19": {
+        "Name": "CompactPartitions",
         "Param": {
           "Name": "CompactPartitionsParams",
           "Type": "object",
@@ -1698,6 +1741,7 @@
         }
       },
       "2": {
+        "Name": "ControlAddresses",
         "Param": {
           "Name": "EmptyValue",
           "Type": "object"
@@ -1726,6 +1770,7 @@
         }
       },
       "20": {
+        "Name": "CompactSectorNumbers",
         "Param": {
           "Name": "CompactSectorNumbersParams",
           "Type": "object",
@@ -1746,6 +1791,7 @@
         }
       },
       "21": {
+        "Name": "ConfirmUpdateWorkerKey",
         "Param": {
           "Name": "EmptyValue",
           "Type": "object"
@@ -1756,6 +1802,7 @@
         }
       },
       "22": {
+        "Name": "RepayDebt",
         "Param": {
           "Name": "EmptyValue",
           "Type": "object"
@@ -1766,6 +1813,7 @@
         }
       },
       "23": {
+        "Name": "ChangeOwnerAddress",
         "Param": {
           "Name": "Address",
           "Type": "string"
@@ -1776,6 +1824,7 @@
         }
       },
       "24": {
+        "Name": "DisputeWindowedPoSt",
         "Param": {
           "Name": "DisputeWindowedPoStParams",
           "Type": "object",
@@ -1796,6 +1845,7 @@
         }
       },
       "25": {
+        "Name": "PreCommitSectorBatch",
         "Param": {
           "Name": "PreCommitSectorBatchParams",
           "Type": "object",
@@ -1868,6 +1918,7 @@
         }
       },
       "26": {
+        "Name": "ProveCommitAggregate",
         "Param": {
           "Name": "ProveCommitAggregateParams",
           "Type": "object",
@@ -1896,6 +1947,7 @@
         }
       },
       "27": {
+        "Name": "ProveReplicaUpdates",
         "Param": {
           "Name": "ProveReplicaUpdatesParams",
           "Type": "object",
@@ -1964,6 +2016,7 @@
         }
       },
       "3": {
+        "Name": "ChangeWorkerAddress",
         "Param": {
           "Name": "ChangeWorkerAddressParams",
           "Type": "object",
@@ -1988,6 +2041,7 @@
         }
       },
       "4": {
+        "Name": "ChangePeerID",
         "Param": {
           "Name": "ChangePeerIDParams",
           "Type": "object",
@@ -2008,6 +2062,7 @@
         }
       },
       "5": {
+        "Name": "SubmitWindowedPoSt",
         "Param": {
           "Name": "SubmitWindowedPoStParams",
           "Type": "object",
@@ -2080,6 +2135,7 @@
         }
       },
       "6": {
+        "Name": "PreCommitSector",
         "Param": {
           "Name": "SectorPreCommitInfo",
           "Type": "object",
@@ -2142,6 +2198,7 @@
         }
       },
       "7": {
+        "Name": "ProveCommitSector",
         "Param": {
           "Name": "ProveCommitSectorParams",
           "Type": "object",
@@ -2166,6 +2223,7 @@
         }
       },
       "8": {
+        "Name": "ExtendSectorExpiration",
         "Param": {
           "Name": "ExtendSectorExpirationParams",
           "Type": "object",
@@ -2208,6 +2266,7 @@
         }
       },
       "9": {
+        "Name": "TerminateSectors",
         "Param": {
           "Name": "TerminateSectorsParams",
           "Type": "object",
@@ -2346,6 +2405,7 @@
     },
     "Methods": {
       "1": {
+        "Name": "Constructor",
         "Param": {
           "Name": "EmptyValue",
           "Type": "object"
@@ -2356,6 +2416,7 @@
         }
       },
       "2": {
+        "Name": "CreateMiner",
         "Param": {
           "Name": "CreateMinerParams",
           "Type": "object",
@@ -2410,6 +2471,7 @@
         }
       },
       "3": {
+        "Name": "UpdateClaimedPower",
         "Param": {
           "Name": "UpdateClaimedPowerParams",
           "Type": "object",
@@ -2430,6 +2492,7 @@
         }
       },
       "4": {
+        "Name": "EnrollCronEvent",
         "Param": {
           "Name": "EnrollCronEventParams",
           "Type": "object",
@@ -2454,6 +2517,7 @@
         }
       },
       "5": {
+        "Name": "CronTick",
         "Param": {
           "Name": "EmptyValue",
           "Type": "object"
@@ -2464,6 +2528,7 @@
         }
       },
       "6": {
+        "Name": "UpdatePledgeTotal",
         "Param": {
           "Name": "FilecoinNumber",
           "Type": "string"
@@ -2474,6 +2539,7 @@
         }
       },
       "8": {
+        "Name": "SubmitPoRepForBulkVerify",
         "Param": {
           "Name": "SealVerifyInfo",
           "Type": "object",
@@ -2556,6 +2622,7 @@
         }
       },
       "9": {
+        "Name": "CurrentTotalPower",
         "Param": {
           "Name": "EmptyValue",
           "Type": "object"
@@ -2649,6 +2716,7 @@
     },
     "Methods": {
       "1": {
+        "Name": "Constructor",
         "Param": {
           "Name": "Address",
           "Type": "string"
@@ -2659,6 +2727,7 @@
         }
       },
       "2": {
+        "Name": "AddVerifier",
         "Param": {
           "Name": "AddVerifierParams",
           "Type": "object",
@@ -2679,6 +2748,7 @@
         }
       },
       "3": {
+        "Name": "RemoveVerifier",
         "Param": {
           "Name": "Address",
           "Type": "string"
@@ -2689,6 +2759,7 @@
         }
       },
       "4": {
+        "Name": "AddVerifiedClient",
         "Param": {
           "Name": "AddVerifiedClientParams",
           "Type": "object",
@@ -2709,6 +2780,7 @@
         }
       },
       "5": {
+        "Name": "UseBytes",
         "Param": {
           "Name": "UseBytesParams",
           "Type": "object",
@@ -2729,6 +2801,7 @@
         }
       },
       "6": {
+        "Name": "RestoreBytes",
         "Param": {
           "Name": "RestoreBytesParams",
           "Type": "object",
@@ -2749,6 +2822,7 @@
         }
       },
       "7": {
+        "Name": "RemoveVerifiedClientDataCap",
         "Param": {
           "Name": "RemoveDataCapParams",
           "Type": "object",
