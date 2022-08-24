@@ -78,7 +78,12 @@ func main() {
 			methodType := reflect.TypeOf(method)
 			methodDataType := GetDataType(methodType)
 
-			// Get method parameter
+			// Set method name
+			fullName := runtime.FuncForPC(reflect.ValueOf(method).Pointer()).Name()
+			nameParts := strings.Split(fullName, ".")
+			actorMethod.Name = nameParts[len(nameParts)-1]
+
+			// Set method parameter
 			paramsCount := len(methodDataType.Params)
 			if paramsCount != 3 {
 				log.Fatalf("%s actor method %s has %d parameters, expected 3", name, method, paramsCount)
@@ -93,7 +98,7 @@ func main() {
 			}
 			actorMethod.Param = methodDataType.Params[2]
 
-			// Get method return value
+			// Set method return value
 			returnsCount := len(methodDataType.Returns)
 			if returnsCount != 1 {
 				log.Fatalf("%s actor method %s has %d return values, expected 1", name, method, returnsCount)
