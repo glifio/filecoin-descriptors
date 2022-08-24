@@ -32,15 +32,15 @@ const (
 	DataTypeInterface = "interface"
 )
 
-type ActorMethodMap = map[string]ActorMethod
+type ActorMethods = map[string]ActorMethod
 type ActorMethod = struct {
 	Name   string
 	Param  DataType
 	Return DataType
 }
 
-type ActorDescriptorMap = map[ActorName]ActorDescriptor
+type ActorDescriptors = map[ActorName]ActorDescriptor
 type ActorDescriptor struct {
 	State   DataTypeMap
-	Methods ActorMethodMap
+	Methods ActorMethods
 }

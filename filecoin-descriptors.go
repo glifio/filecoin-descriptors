@@ -61,7 +61,7 @@ func main() {
 	 * Actor descriptors
 	 */
 
-	var actorDescriptorMap = ActorDescriptorMap{}
+	var actorDescriptorMap = ActorDescriptors{}
 	for name, reflectableActor := range reflectableActors {
 
 		// State reflection
@@ -72,7 +72,7 @@ func main() {
 		}
 
 		// Methods reflection
-		var actorMethodMap = ActorMethodMap{}
+		var actorMethodMap = ActorMethods{}
 		for key, method := range reflectableActor.Methods {
 			var actorMethod ActorMethod
 			methodType := reflect.TypeOf(method)
