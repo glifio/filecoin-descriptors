@@ -102,7 +102,11 @@ func GetDataType(t reflect.Type) DataType {
 
 	case reflect.Interface:
 		dataType.Type = DataTypeInterface
-		fmt.Printf("Unhandled interface reflection for: %s\n", t.String())
+		dataType.Methods = DataTypes{}
+		for i := 0; i < t.NumMethod(); i++ {
+			m := t.Method(i)
+			dataType.Methods[m.Name] = GetDataType(m.Type)
+		}
 		return dataType
 	}
 

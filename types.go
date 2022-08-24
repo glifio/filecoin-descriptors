@@ -18,6 +18,7 @@ type DataType struct {
 	Key        *DataType  `json:",omitempty"` // For map type
 	Contains   *DataType  `json:",omitempty"` // For map / array type
 	Children   DataTypes  `json:",omitempty"` // For object type
+	Methods    DataTypes  `json:",omitempty"` // For interface type
 	Params     []DataType `json:",omitempty"` // For function type
 	Returns    []DataType `json:",omitempty"` // For function type
 	IsVariadic bool       `json:",omitempty"` // For function type
