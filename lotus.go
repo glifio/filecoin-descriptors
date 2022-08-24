@@ -15,15 +15,13 @@ import (
 
 type Lotus struct {
 	api       api.FullNodeStruct
-	network   Network
 	rpcCloser jsonrpc.ClientCloser
 }
 
-func (l *Lotus) Open(network Network) error {
+func (l *Lotus) Open(url string) error {
 	var err error
-	l.network = network
 	l.rpcCloser, err = jsonrpc.NewMergeClient(context.Background(),
-		network.Url,
+		url,
 		"Filecoin",
 		api.GetInternalStructs(&l.api),
 		http.Header{})
@@ -35,7 +33,7 @@ func (l *Lotus) Close() {
 }
 
 func (l *Lotus) GetActorCodeMap() (ActorCodeMap, error) {
-	addr, err := address.NewFromString(l.network.Code + "00")
+	addr, err := address.NewFromString("f00")
 	if err != nil {
 		return nil, err
 	}
