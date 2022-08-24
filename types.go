@@ -13,8 +13,8 @@ type ActorCodeMap = map[ActorName]ActorCode
 type PropName = string
 type DataTypes = map[PropName]DataType
 type DataType struct {
-	Name       string
 	Type       string
+	Name       string
 	Key        *DataType  `json:",omitempty"` // For map type
 	Contains   *DataType  `json:",omitempty"` // For map / array type
 	Children   DataTypes  `json:",omitempty"` // For object type
