@@ -2,31 +2,31 @@
   "account": {
     "State": {
       "Address": {
-        "Name": "Address",
-        "Type": "string"
+        "Type": "string",
+        "Name": "Address"
       }
     },
     "Methods": {
       "1": {
         "Name": "Constructor",
         "Param": {
-          "Name": "Address",
-          "Type": "string"
+          "Type": "string",
+          "Name": "Address"
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "2": {
         "Name": "PubkeyAddress",
         "Param": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         },
         "Return": {
-          "Name": "Address",
-          "Type": "string"
+          "Type": "string",
+          "Name": "Address"
         }
       }
     }
@@ -34,19 +34,19 @@
   "cron": {
     "State": {
       "Entries": {
-        "Name": "[]Entry",
         "Type": "array",
+        "Name": "[]Entry",
         "Contains": {
-          "Name": "Entry",
           "Type": "object",
+          "Name": "Entry",
           "Children": {
             "MethodNum": {
-              "Name": "MethodNum",
-              "Type": "number"
+              "Type": "number",
+              "Name": "MethodNum"
             },
             "Receiver": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             }
           }
         }
@@ -56,23 +56,23 @@
       "1": {
         "Name": "Constructor",
         "Param": {
-          "Name": "ConstructorParams",
           "Type": "object",
+          "Name": "ConstructorParams",
           "Children": {
             "Entries": {
-              "Name": "[]Entry",
               "Type": "array",
+              "Name": "[]Entry",
               "Contains": {
-                "Name": "Entry",
                 "Type": "object",
+                "Name": "Entry",
                 "Children": {
                   "MethodNum": {
-                    "Name": "MethodNum",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "MethodNum"
                   },
                   "Receiver": {
-                    "Name": "Address",
-                    "Type": "string"
+                    "Type": "string",
+                    "Name": "Address"
                   }
                 }
               }
@@ -80,19 +80,19 @@
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "2": {
         "Name": "EpochTick",
         "Param": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       }
     }
@@ -100,79 +100,79 @@
   "init": {
     "State": {
       "AddressMap": {
-        "Name": "Cid",
         "Type": "object",
+        "Name": "Cid",
         "Children": {
           "/": {
-            "Name": "CidString",
-            "Type": "string"
+            "Type": "string",
+            "Name": "CidString"
           }
         }
       },
       "NetworkName": {
-        "Name": "string",
-        "Type": "string"
+        "Type": "string",
+        "Name": "string"
       },
       "NextID": {
-        "Name": "ActorID",
-        "Type": "number"
+        "Type": "number",
+        "Name": "ActorID"
       }
     },
     "Methods": {
       "1": {
         "Name": "Constructor",
         "Param": {
-          "Name": "ConstructorParams",
           "Type": "object",
+          "Name": "ConstructorParams",
           "Children": {
             "NetworkName": {
-              "Name": "string",
-              "Type": "string"
+              "Type": "string",
+              "Name": "string"
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "2": {
         "Name": "Exec",
         "Param": {
-          "Name": "ExecParams",
           "Type": "object",
+          "Name": "ExecParams",
           "Children": {
             "CodeCID": {
-              "Name": "Cid",
               "Type": "object",
+              "Name": "Cid",
               "Children": {
                 "/": {
-                  "Name": "CidString",
-                  "Type": "string"
+                  "Type": "string",
+                  "Name": "CidString"
                 }
               }
             },
             "ConstructorParams": {
-              "Name": "[]uint8",
               "Type": "array",
+              "Name": "[]uint8",
               "Contains": {
-                "Name": "uint8",
-                "Type": "number"
+                "Type": "number",
+                "Name": "uint8"
               }
             }
           }
         },
         "Return": {
-          "Name": "ExecReturn",
           "Type": "object",
+          "Name": "ExecReturn",
           "Children": {
             "IDAddress": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             },
             "RobustAddress": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             }
           }
         }
@@ -182,129 +182,129 @@
   "multisig": {
     "State": {
       "InitialBalance": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       },
       "NextTxnID": {
-        "Name": "TxnID",
-        "Type": "number"
+        "Type": "number",
+        "Name": "TxnID"
       },
       "NumApprovalsThreshold": {
-        "Name": "uint64",
-        "Type": "number"
+        "Type": "number",
+        "Name": "uint64"
       },
       "PendingTxns": {
-        "Name": "Cid",
         "Type": "object",
+        "Name": "Cid",
         "Children": {
           "/": {
-            "Name": "CidString",
-            "Type": "string"
+            "Type": "string",
+            "Name": "CidString"
           }
         }
       },
       "Signers": {
-        "Name": "[]Address",
         "Type": "array",
+        "Name": "[]Address",
         "Contains": {
-          "Name": "Address",
-          "Type": "string"
+          "Type": "string",
+          "Name": "Address"
         }
       },
       "StartEpoch": {
-        "Name": "ChainEpoch",
-        "Type": "number"
+        "Type": "number",
+        "Name": "ChainEpoch"
       },
       "UnlockDuration": {
-        "Name": "ChainEpoch",
-        "Type": "number"
+        "Type": "number",
+        "Name": "ChainEpoch"
       }
     },
     "Methods": {
       "1": {
         "Name": "Constructor",
         "Param": {
-          "Name": "ConstructorParams",
           "Type": "object",
+          "Name": "ConstructorParams",
           "Children": {
             "NumApprovalsThreshold": {
-              "Name": "uint64",
-              "Type": "number"
+              "Type": "number",
+              "Name": "uint64"
             },
             "Signers": {
-              "Name": "[]Address",
               "Type": "array",
+              "Name": "[]Address",
               "Contains": {
-                "Name": "Address",
-                "Type": "string"
+                "Type": "string",
+                "Name": "Address"
               }
             },
             "StartEpoch": {
-              "Name": "ChainEpoch",
-              "Type": "number"
+              "Type": "number",
+              "Name": "ChainEpoch"
             },
             "UnlockDuration": {
-              "Name": "ChainEpoch",
-              "Type": "number"
+              "Type": "number",
+              "Name": "ChainEpoch"
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "2": {
         "Name": "Propose",
         "Param": {
-          "Name": "ProposeParams",
           "Type": "object",
+          "Name": "ProposeParams",
           "Children": {
             "Method": {
-              "Name": "MethodNum",
-              "Type": "number"
+              "Type": "number",
+              "Name": "MethodNum"
             },
             "Params": {
-              "Name": "[]uint8",
               "Type": "array",
+              "Name": "[]uint8",
               "Contains": {
-                "Name": "uint8",
-                "Type": "number"
+                "Type": "number",
+                "Name": "uint8"
               }
             },
             "To": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             },
             "Value": {
-              "Name": "FilecoinNumber",
-              "Type": "string"
+              "Type": "string",
+              "Name": "FilecoinNumber"
             }
           }
         },
         "Return": {
-          "Name": "ProposeReturn",
           "Type": "object",
+          "Name": "ProposeReturn",
           "Children": {
             "Applied": {
-              "Name": "bool",
-              "Type": "bool"
+              "Type": "bool",
+              "Name": "bool"
             },
             "Code": {
-              "Name": "ExitCode",
-              "Type": "number"
+              "Type": "number",
+              "Name": "ExitCode"
             },
             "Ret": {
-              "Name": "[]uint8",
               "Type": "array",
+              "Name": "[]uint8",
               "Contains": {
-                "Name": "uint8",
-                "Type": "number"
+                "Type": "number",
+                "Name": "uint8"
               }
             },
             "TxnID": {
-              "Name": "TxnID",
-              "Type": "number"
+              "Type": "number",
+              "Name": "TxnID"
             }
           }
         }
@@ -312,41 +312,41 @@
       "3": {
         "Name": "Approve",
         "Param": {
-          "Name": "TxnIDParams",
           "Type": "object",
+          "Name": "TxnIDParams",
           "Children": {
             "ID": {
-              "Name": "TxnID",
-              "Type": "number"
+              "Type": "number",
+              "Name": "TxnID"
             },
             "ProposalHash": {
-              "Name": "[]uint8",
               "Type": "array",
+              "Name": "[]uint8",
               "Contains": {
-                "Name": "uint8",
-                "Type": "number"
+                "Type": "number",
+                "Name": "uint8"
               }
             }
           }
         },
         "Return": {
-          "Name": "ApproveReturn",
           "Type": "object",
+          "Name": "ApproveReturn",
           "Children": {
             "Applied": {
-              "Name": "bool",
-              "Type": "bool"
+              "Type": "bool",
+              "Name": "bool"
             },
             "Code": {
-              "Name": "ExitCode",
-              "Type": "number"
+              "Type": "number",
+              "Name": "ExitCode"
             },
             "Ret": {
-              "Name": "[]uint8",
               "Type": "array",
+              "Name": "[]uint8",
               "Contains": {
-                "Name": "uint8",
-                "Type": "number"
+                "Type": "number",
+                "Name": "uint8"
               }
             }
           }
@@ -355,131 +355,131 @@
       "4": {
         "Name": "Cancel",
         "Param": {
-          "Name": "TxnIDParams",
           "Type": "object",
+          "Name": "TxnIDParams",
           "Children": {
             "ID": {
-              "Name": "TxnID",
-              "Type": "number"
+              "Type": "number",
+              "Name": "TxnID"
             },
             "ProposalHash": {
-              "Name": "[]uint8",
               "Type": "array",
+              "Name": "[]uint8",
               "Contains": {
-                "Name": "uint8",
-                "Type": "number"
+                "Type": "number",
+                "Name": "uint8"
               }
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "5": {
         "Name": "AddSigner",
         "Param": {
-          "Name": "AddSignerParams",
           "Type": "object",
+          "Name": "AddSignerParams",
           "Children": {
             "Increase": {
-              "Name": "bool",
-              "Type": "bool"
+              "Type": "bool",
+              "Name": "bool"
             },
             "Signer": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "6": {
         "Name": "RemoveSigner",
         "Param": {
-          "Name": "RemoveSignerParams",
           "Type": "object",
+          "Name": "RemoveSignerParams",
           "Children": {
             "Decrease": {
-              "Name": "bool",
-              "Type": "bool"
+              "Type": "bool",
+              "Name": "bool"
             },
             "Signer": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "7": {
         "Name": "SwapSigner",
         "Param": {
-          "Name": "SwapSignerParams",
           "Type": "object",
+          "Name": "SwapSignerParams",
           "Children": {
             "From": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             },
             "To": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "8": {
         "Name": "ChangeNumApprovalsThreshold",
         "Param": {
-          "Name": "ChangeNumApprovalsThresholdParams",
           "Type": "object",
+          "Name": "ChangeNumApprovalsThresholdParams",
           "Children": {
             "NewThreshold": {
-              "Name": "uint64",
-              "Type": "number"
+              "Type": "number",
+              "Name": "uint64"
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "9": {
         "Name": "LockBalance",
         "Param": {
-          "Name": "LockBalanceParams",
           "Type": "object",
+          "Name": "LockBalanceParams",
           "Children": {
             "Amount": {
-              "Name": "FilecoinNumber",
-              "Type": "string"
+              "Type": "string",
+              "Name": "FilecoinNumber"
             },
             "StartEpoch": {
-              "Name": "ChainEpoch",
-              "Type": "number"
+              "Type": "number",
+              "Name": "ChainEpoch"
             },
             "UnlockDuration": {
-              "Name": "ChainEpoch",
-              "Type": "number"
+              "Type": "number",
+              "Name": "ChainEpoch"
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       }
     }
@@ -487,199 +487,199 @@
   "paymentchannel": {
     "State": {
       "From": {
-        "Name": "Address",
-        "Type": "string"
+        "Type": "string",
+        "Name": "Address"
       },
       "LaneStates": {
-        "Name": "Cid",
         "Type": "object",
+        "Name": "Cid",
         "Children": {
           "/": {
-            "Name": "CidString",
-            "Type": "string"
+            "Type": "string",
+            "Name": "CidString"
           }
         }
       },
       "MinSettleHeight": {
-        "Name": "ChainEpoch",
-        "Type": "number"
+        "Type": "number",
+        "Name": "ChainEpoch"
       },
       "SettlingAt": {
-        "Name": "ChainEpoch",
-        "Type": "number"
+        "Type": "number",
+        "Name": "ChainEpoch"
       },
       "To": {
-        "Name": "Address",
-        "Type": "string"
+        "Type": "string",
+        "Name": "Address"
       },
       "ToSend": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       }
     },
     "Methods": {
       "1": {
         "Name": "Constructor",
         "Param": {
-          "Name": "ConstructorParams",
           "Type": "object",
+          "Name": "ConstructorParams",
           "Children": {
             "From": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             },
             "To": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "2": {
         "Name": "UpdateChannelState",
         "Param": {
-          "Name": "UpdateChannelStateParams",
           "Type": "object",
+          "Name": "UpdateChannelStateParams",
           "Children": {
             "Secret": {
-              "Name": "[]uint8",
               "Type": "array",
+              "Name": "[]uint8",
               "Contains": {
-                "Name": "uint8",
-                "Type": "number"
+                "Type": "number",
+                "Name": "uint8"
               }
             },
             "Sv": {
-              "Name": "SignedVoucher",
               "Type": "object",
+              "Name": "SignedVoucher",
               "Children": {
                 "Amount": {
-                  "Name": "FilecoinNumber",
-                  "Type": "string"
+                  "Type": "string",
+                  "Name": "FilecoinNumber"
                 },
                 "ChannelAddr": {
-                  "Name": "Address",
-                  "Type": "string"
+                  "Type": "string",
+                  "Name": "Address"
                 },
                 "Extra": {
-                  "Name": "ModVerifyParams",
                   "Type": "object",
+                  "Name": "ModVerifyParams",
                   "Children": {
                     "Actor": {
-                      "Name": "Address",
-                      "Type": "string"
+                      "Type": "string",
+                      "Name": "Address"
                     },
                     "Data": {
-                      "Name": "[]uint8",
                       "Type": "array",
+                      "Name": "[]uint8",
                       "Contains": {
-                        "Name": "uint8",
-                        "Type": "number"
+                        "Type": "number",
+                        "Name": "uint8"
                       }
                     },
                     "Method": {
-                      "Name": "MethodNum",
-                      "Type": "number"
+                      "Type": "number",
+                      "Name": "MethodNum"
                     }
                   }
                 },
                 "Lane": {
-                  "Name": "uint64",
-                  "Type": "number"
+                  "Type": "number",
+                  "Name": "uint64"
                 },
                 "Merges": {
-                  "Name": "[]Merge",
                   "Type": "array",
+                  "Name": "[]Merge",
                   "Contains": {
-                    "Name": "Merge",
                     "Type": "object",
+                    "Name": "Merge",
                     "Children": {
                       "Lane": {
-                        "Name": "uint64",
-                        "Type": "number"
+                        "Type": "number",
+                        "Name": "uint64"
                       },
                       "Nonce": {
-                        "Name": "uint64",
-                        "Type": "number"
+                        "Type": "number",
+                        "Name": "uint64"
                       }
                     }
                   }
                 },
                 "MinSettleHeight": {
-                  "Name": "ChainEpoch",
-                  "Type": "number"
+                  "Type": "number",
+                  "Name": "ChainEpoch"
                 },
                 "Nonce": {
-                  "Name": "uint64",
-                  "Type": "number"
+                  "Type": "number",
+                  "Name": "uint64"
                 },
                 "SecretHash": {
-                  "Name": "[]uint8",
                   "Type": "array",
+                  "Name": "[]uint8",
                   "Contains": {
-                    "Name": "uint8",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "uint8"
                   }
                 },
                 "Signature": {
-                  "Name": "Signature",
                   "Type": "object",
+                  "Name": "Signature",
                   "Children": {
                     "Data": {
-                      "Name": "[]uint8",
                       "Type": "array",
+                      "Name": "[]uint8",
                       "Contains": {
-                        "Name": "uint8",
-                        "Type": "number"
+                        "Type": "number",
+                        "Name": "uint8"
                       }
                     },
                     "Type": {
-                      "Name": "SigType",
-                      "Type": "number"
+                      "Type": "number",
+                      "Name": "SigType"
                     }
                   }
                 },
                 "TimeLockMax": {
-                  "Name": "ChainEpoch",
-                  "Type": "number"
+                  "Type": "number",
+                  "Name": "ChainEpoch"
                 },
                 "TimeLockMin": {
-                  "Name": "ChainEpoch",
-                  "Type": "number"
+                  "Type": "number",
+                  "Name": "ChainEpoch"
                 }
               }
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "3": {
         "Name": "Settle",
         "Param": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "4": {
         "Name": "Collect",
         "Param": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       }
     }
@@ -687,126 +687,126 @@
   "reward": {
     "State": {
       "BaselineTotal": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       },
       "CumsumBaseline": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       },
       "CumsumRealized": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       },
       "EffectiveBaselinePower": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       },
       "EffectiveNetworkTime": {
-        "Name": "ChainEpoch",
-        "Type": "number"
+        "Type": "number",
+        "Name": "ChainEpoch"
       },
       "Epoch": {
-        "Name": "ChainEpoch",
-        "Type": "number"
+        "Type": "number",
+        "Name": "ChainEpoch"
       },
       "SimpleTotal": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       },
       "ThisEpochBaselinePower": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       },
       "ThisEpochReward": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       },
       "ThisEpochRewardSmoothed": {
-        "Name": "FilterEstimate",
         "Type": "object",
+        "Name": "FilterEstimate",
         "Children": {
           "PositionEstimate": {
-            "Name": "FilecoinNumber",
-            "Type": "string"
+            "Type": "string",
+            "Name": "FilecoinNumber"
           },
           "VelocityEstimate": {
-            "Name": "FilecoinNumber",
-            "Type": "string"
+            "Type": "string",
+            "Name": "FilecoinNumber"
           }
         }
       },
       "TotalStoragePowerReward": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       }
     },
     "Methods": {
       "1": {
         "Name": "Constructor",
         "Param": {
-          "Name": "FilecoinNumber",
-          "Type": "string"
+          "Type": "string",
+          "Name": "FilecoinNumber"
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "2": {
         "Name": "AwardBlockReward",
         "Param": {
-          "Name": "AwardBlockRewardParams",
           "Type": "object",
+          "Name": "AwardBlockRewardParams",
           "Children": {
             "GasReward": {
-              "Name": "FilecoinNumber",
-              "Type": "string"
+              "Type": "string",
+              "Name": "FilecoinNumber"
             },
             "Miner": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             },
             "Penalty": {
-              "Name": "FilecoinNumber",
-              "Type": "string"
+              "Type": "string",
+              "Name": "FilecoinNumber"
             },
             "WinCount": {
-              "Name": "int64",
-              "Type": "number"
+              "Type": "number",
+              "Name": "int64"
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "3": {
         "Name": "ThisEpochReward",
         "Param": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         },
         "Return": {
-          "Name": "ThisEpochRewardReturn",
           "Type": "object",
+          "Name": "ThisEpochRewardReturn",
           "Children": {
             "ThisEpochBaselinePower": {
-              "Name": "FilecoinNumber",
-              "Type": "string"
+              "Type": "string",
+              "Name": "FilecoinNumber"
             },
             "ThisEpochRewardSmoothed": {
-              "Name": "FilterEstimate",
               "Type": "object",
+              "Name": "FilterEstimate",
               "Children": {
                 "PositionEstimate": {
-                  "Name": "FilecoinNumber",
-                  "Type": "string"
+                  "Type": "string",
+                  "Name": "FilecoinNumber"
                 },
                 "VelocityEstimate": {
-                  "Name": "FilecoinNumber",
-                  "Type": "string"
+                  "Type": "string",
+                  "Name": "FilecoinNumber"
                 }
               }
             }
@@ -816,12 +816,12 @@
       "4": {
         "Name": "UpdateNetworkKPI",
         "Param": {
-          "Name": "FilecoinNumber",
-          "Type": "string"
+          "Type": "string",
+          "Name": "FilecoinNumber"
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       }
     }
@@ -829,228 +829,228 @@
   "storagemarket": {
     "State": {
       "DealOpsByEpoch": {
-        "Name": "Cid",
         "Type": "object",
+        "Name": "Cid",
         "Children": {
           "/": {
-            "Name": "CidString",
-            "Type": "string"
+            "Type": "string",
+            "Name": "CidString"
           }
         }
       },
       "EscrowTable": {
-        "Name": "Cid",
         "Type": "object",
+        "Name": "Cid",
         "Children": {
           "/": {
-            "Name": "CidString",
-            "Type": "string"
+            "Type": "string",
+            "Name": "CidString"
           }
         }
       },
       "LastCron": {
-        "Name": "ChainEpoch",
-        "Type": "number"
+        "Type": "number",
+        "Name": "ChainEpoch"
       },
       "LockedTable": {
-        "Name": "Cid",
         "Type": "object",
+        "Name": "Cid",
         "Children": {
           "/": {
-            "Name": "CidString",
-            "Type": "string"
+            "Type": "string",
+            "Name": "CidString"
           }
         }
       },
       "NextID": {
-        "Name": "DealID",
-        "Type": "number"
+        "Type": "number",
+        "Name": "DealID"
       },
       "PendingProposals": {
-        "Name": "Cid",
         "Type": "object",
+        "Name": "Cid",
         "Children": {
           "/": {
-            "Name": "CidString",
-            "Type": "string"
+            "Type": "string",
+            "Name": "CidString"
           }
         }
       },
       "Proposals": {
-        "Name": "Cid",
         "Type": "object",
+        "Name": "Cid",
         "Children": {
           "/": {
-            "Name": "CidString",
-            "Type": "string"
+            "Type": "string",
+            "Name": "CidString"
           }
         }
       },
       "States": {
-        "Name": "Cid",
         "Type": "object",
+        "Name": "Cid",
         "Children": {
           "/": {
-            "Name": "CidString",
-            "Type": "string"
+            "Type": "string",
+            "Name": "CidString"
           }
         }
       },
       "TotalClientLockedCollateral": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       },
       "TotalClientStorageFee": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       },
       "TotalProviderLockedCollateral": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       }
     },
     "Methods": {
       "1": {
         "Name": "Constructor",
         "Param": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "2": {
         "Name": "AddBalance",
         "Param": {
-          "Name": "Address",
-          "Type": "string"
+          "Type": "string",
+          "Name": "Address"
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "3": {
         "Name": "WithdrawBalance",
         "Param": {
-          "Name": "WithdrawBalanceParams",
           "Type": "object",
+          "Name": "WithdrawBalanceParams",
           "Children": {
             "Amount": {
-              "Name": "FilecoinNumber",
-              "Type": "string"
+              "Type": "string",
+              "Name": "FilecoinNumber"
             },
             "ProviderOrClientAddress": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             }
           }
         },
         "Return": {
-          "Name": "FilecoinNumber",
-          "Type": "string"
+          "Type": "string",
+          "Name": "FilecoinNumber"
         }
       },
       "4": {
         "Name": "PublishStorageDeals",
         "Param": {
-          "Name": "PublishStorageDealsParams",
           "Type": "object",
+          "Name": "PublishStorageDealsParams",
           "Children": {
             "Deals": {
-              "Name": "[]ClientDealProposal",
               "Type": "array",
+              "Name": "[]ClientDealProposal",
               "Contains": {
-                "Name": "ClientDealProposal",
                 "Type": "object",
+                "Name": "ClientDealProposal",
                 "Children": {
                   "ClientSignature": {
-                    "Name": "Signature",
                     "Type": "object",
+                    "Name": "Signature",
                     "Children": {
                       "Data": {
-                        "Name": "[]uint8",
                         "Type": "array",
+                        "Name": "[]uint8",
                         "Contains": {
-                          "Name": "uint8",
-                          "Type": "number"
+                          "Type": "number",
+                          "Name": "uint8"
                         }
                       },
                       "Type": {
-                        "Name": "SigType",
-                        "Type": "number"
+                        "Type": "number",
+                        "Name": "SigType"
                       }
                     }
                   },
                   "Proposal": {
-                    "Name": "DealProposal",
                     "Type": "object",
+                    "Name": "DealProposal",
                     "Children": {
                       "Client": {
-                        "Name": "Address",
-                        "Type": "string"
+                        "Type": "string",
+                        "Name": "Address"
                       },
                       "ClientCollateral": {
-                        "Name": "FilecoinNumber",
-                        "Type": "string"
+                        "Type": "string",
+                        "Name": "FilecoinNumber"
                       },
                       "EndEpoch": {
-                        "Name": "ChainEpoch",
-                        "Type": "number"
+                        "Type": "number",
+                        "Name": "ChainEpoch"
                       },
                       "Label": {
-                        "Name": "DealLabel",
                         "Type": "object",
+                        "Name": "DealLabel",
                         "Children": {
                           "bs": {
-                            "Name": "[]uint8",
                             "Type": "array",
+                            "Name": "[]uint8",
                             "Contains": {
-                              "Name": "uint8",
-                              "Type": "number"
+                              "Type": "number",
+                              "Name": "uint8"
                             }
                           },
                           "notString": {
-                            "Name": "bool",
-                            "Type": "bool"
+                            "Type": "bool",
+                            "Name": "bool"
                           }
                         }
                       },
                       "PieceCID": {
-                        "Name": "Cid",
                         "Type": "object",
+                        "Name": "Cid",
                         "Children": {
                           "/": {
-                            "Name": "CidString",
-                            "Type": "string"
+                            "Type": "string",
+                            "Name": "CidString"
                           }
                         }
                       },
                       "PieceSize": {
-                        "Name": "PaddedPieceSize",
-                        "Type": "number"
+                        "Type": "number",
+                        "Name": "PaddedPieceSize"
                       },
                       "Provider": {
-                        "Name": "Address",
-                        "Type": "string"
+                        "Type": "string",
+                        "Name": "Address"
                       },
                       "ProviderCollateral": {
-                        "Name": "FilecoinNumber",
-                        "Type": "string"
+                        "Type": "string",
+                        "Name": "FilecoinNumber"
                       },
                       "StartEpoch": {
-                        "Name": "ChainEpoch",
-                        "Type": "number"
+                        "Type": "number",
+                        "Name": "ChainEpoch"
                       },
                       "StoragePricePerEpoch": {
-                        "Name": "FilecoinNumber",
-                        "Type": "string"
+                        "Type": "string",
+                        "Name": "FilecoinNumber"
                       },
                       "VerifiedDeal": {
-                        "Name": "bool",
-                        "Type": "bool"
+                        "Type": "bool",
+                        "Name": "bool"
                       }
                     }
                   }
@@ -1060,23 +1060,23 @@
           }
         },
         "Return": {
-          "Name": "PublishStorageDealsReturn",
           "Type": "object",
+          "Name": "PublishStorageDealsReturn",
           "Children": {
             "IDs": {
-              "Name": "[]DealID",
               "Type": "array",
+              "Name": "[]DealID",
               "Contains": {
-                "Name": "DealID",
-                "Type": "number"
+                "Type": "number",
+                "Name": "DealID"
               }
             },
             "ValidDeals": {
-              "Name": "BitField",
               "Type": "array",
+              "Name": "BitField",
               "Contains": {
-                "Name": "Bit",
-                "Type": "number"
+                "Type": "number",
+                "Name": "Bit"
               }
             }
           }
@@ -1085,27 +1085,27 @@
       "5": {
         "Name": "VerifyDealsForActivation",
         "Param": {
-          "Name": "VerifyDealsForActivationParams",
           "Type": "object",
+          "Name": "VerifyDealsForActivationParams",
           "Children": {
             "Sectors": {
-              "Name": "[]SectorDeals",
               "Type": "array",
+              "Name": "[]SectorDeals",
               "Contains": {
-                "Name": "SectorDeals",
                 "Type": "object",
+                "Name": "SectorDeals",
                 "Children": {
                   "DealIDs": {
-                    "Name": "[]DealID",
                     "Type": "array",
+                    "Name": "[]DealID",
                     "Contains": {
-                      "Name": "DealID",
-                      "Type": "number"
+                      "Type": "number",
+                      "Name": "DealID"
                     }
                   },
                   "SectorExpiry": {
-                    "Name": "ChainEpoch",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "ChainEpoch"
                   }
                 }
               }
@@ -1113,27 +1113,27 @@
           }
         },
         "Return": {
-          "Name": "VerifyDealsForActivationReturn",
           "Type": "object",
+          "Name": "VerifyDealsForActivationReturn",
           "Children": {
             "Sectors": {
-              "Name": "[]SectorWeights",
               "Type": "array",
+              "Name": "[]SectorWeights",
               "Contains": {
-                "Name": "SectorWeights",
                 "Type": "object",
+                "Name": "SectorWeights",
                 "Children": {
                   "DealSpace": {
-                    "Name": "uint64",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "uint64"
                   },
                   "DealWeight": {
-                    "Name": "FilecoinNumber",
-                    "Type": "string"
+                    "Type": "string",
+                    "Name": "FilecoinNumber"
                   },
                   "VerifiedDealWeight": {
-                    "Name": "FilecoinNumber",
-                    "Type": "string"
+                    "Type": "string",
+                    "Name": "FilecoinNumber"
                   }
                 }
               }
@@ -1144,77 +1144,77 @@
       "6": {
         "Name": "ActivateDeals",
         "Param": {
-          "Name": "ActivateDealsParams",
           "Type": "object",
+          "Name": "ActivateDealsParams",
           "Children": {
             "DealIDs": {
-              "Name": "[]DealID",
               "Type": "array",
+              "Name": "[]DealID",
               "Contains": {
-                "Name": "DealID",
-                "Type": "number"
+                "Type": "number",
+                "Name": "DealID"
               }
             },
             "SectorExpiry": {
-              "Name": "ChainEpoch",
-              "Type": "number"
+              "Type": "number",
+              "Name": "ChainEpoch"
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "7": {
         "Name": "OnMinerSectorsTerminate",
         "Param": {
-          "Name": "OnMinerSectorsTerminateParams",
           "Type": "object",
+          "Name": "OnMinerSectorsTerminateParams",
           "Children": {
             "DealIDs": {
-              "Name": "[]DealID",
               "Type": "array",
+              "Name": "[]DealID",
               "Contains": {
-                "Name": "DealID",
-                "Type": "number"
+                "Type": "number",
+                "Name": "DealID"
               }
             },
             "Epoch": {
-              "Name": "ChainEpoch",
-              "Type": "number"
+              "Type": "number",
+              "Name": "ChainEpoch"
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "8": {
         "Name": "ComputeDataCommitment",
         "Param": {
-          "Name": "ComputeDataCommitmentParams",
           "Type": "object",
+          "Name": "ComputeDataCommitmentParams",
           "Children": {
             "Inputs": {
-              "Name": "[]SectorDataSpec",
               "Type": "array",
+              "Name": "[]SectorDataSpec",
               "Contains": {
-                "Name": "SectorDataSpec",
                 "Type": "object",
+                "Name": "SectorDataSpec",
                 "Children": {
                   "DealIDs": {
-                    "Name": "[]DealID",
                     "Type": "array",
+                    "Name": "[]DealID",
                     "Contains": {
-                      "Name": "DealID",
-                      "Type": "number"
+                      "Type": "number",
+                      "Name": "DealID"
                     }
                   },
                   "SectorType": {
-                    "Name": "RegisteredSealProof",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "RegisteredSealProof"
                   }
                 }
               }
@@ -1222,19 +1222,19 @@
           }
         },
         "Return": {
-          "Name": "ComputeDataCommitmentReturn",
           "Type": "object",
+          "Name": "ComputeDataCommitmentReturn",
           "Children": {
             "CommDs": {
-              "Name": "[]CborCid",
               "Type": "array",
+              "Name": "[]CborCid",
               "Contains": {
-                "Name": "CborCid",
                 "Type": "object",
+                "Name": "CborCid",
                 "Children": {
                   "str": {
-                    "Name": "string",
-                    "Type": "string"
+                    "Type": "string",
+                    "Name": "string"
                   }
                 }
               }
@@ -1245,12 +1245,12 @@
       "9": {
         "Name": "CronTick",
         "Param": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       }
     }
@@ -1258,108 +1258,108 @@
   "storageminer": {
     "State": {
       "AllocatedSectors": {
-        "Name": "Cid",
         "Type": "object",
+        "Name": "Cid",
         "Children": {
           "/": {
-            "Name": "CidString",
-            "Type": "string"
+            "Type": "string",
+            "Name": "CidString"
           }
         }
       },
       "CurrentDeadline": {
-        "Name": "uint64",
-        "Type": "number"
+        "Type": "number",
+        "Name": "uint64"
       },
       "DeadlineCronActive": {
-        "Name": "bool",
-        "Type": "bool"
+        "Type": "bool",
+        "Name": "bool"
       },
       "Deadlines": {
-        "Name": "Cid",
         "Type": "object",
+        "Name": "Cid",
         "Children": {
           "/": {
-            "Name": "CidString",
-            "Type": "string"
+            "Type": "string",
+            "Name": "CidString"
           }
         }
       },
       "EarlyTerminations": {
-        "Name": "BitField",
         "Type": "array",
+        "Name": "BitField",
         "Contains": {
-          "Name": "Bit",
-          "Type": "number"
+          "Type": "number",
+          "Name": "Bit"
         }
       },
       "FeeDebt": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       },
       "Info": {
-        "Name": "Cid",
         "Type": "object",
+        "Name": "Cid",
         "Children": {
           "/": {
-            "Name": "CidString",
-            "Type": "string"
+            "Type": "string",
+            "Name": "CidString"
           }
         }
       },
       "InitialPledge": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       },
       "LockedFunds": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       },
       "PreCommitDeposits": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       },
       "PreCommittedSectors": {
-        "Name": "Cid",
         "Type": "object",
+        "Name": "Cid",
         "Children": {
           "/": {
-            "Name": "CidString",
-            "Type": "string"
+            "Type": "string",
+            "Name": "CidString"
           }
         }
       },
       "PreCommittedSectorsCleanUp": {
-        "Name": "Cid",
         "Type": "object",
+        "Name": "Cid",
         "Children": {
           "/": {
-            "Name": "CidString",
-            "Type": "string"
+            "Type": "string",
+            "Name": "CidString"
           }
         }
       },
       "ProvingPeriodStart": {
-        "Name": "ChainEpoch",
-        "Type": "number"
+        "Type": "number",
+        "Name": "ChainEpoch"
       },
       "Sectors": {
-        "Name": "Cid",
         "Type": "object",
+        "Name": "Cid",
         "Children": {
           "/": {
-            "Name": "CidString",
-            "Type": "string"
+            "Type": "string",
+            "Name": "CidString"
           }
         }
       },
       "VestingFunds": {
-        "Name": "Cid",
         "Type": "object",
+        "Name": "Cid",
         "Children": {
           "/": {
-            "Name": "CidString",
-            "Type": "string"
+            "Type": "string",
+            "Name": "CidString"
           }
         }
       }
@@ -1368,83 +1368,83 @@
       "1": {
         "Name": "Constructor",
         "Param": {
-          "Name": "MinerConstructorParams",
           "Type": "object",
+          "Name": "MinerConstructorParams",
           "Children": {
             "ControlAddrs": {
-              "Name": "[]Address",
               "Type": "array",
+              "Name": "[]Address",
               "Contains": {
-                "Name": "Address",
-                "Type": "string"
+                "Type": "string",
+                "Name": "Address"
               }
             },
             "Multiaddrs": {
-              "Name": "[][]uint8",
               "Type": "array",
+              "Name": "[][]uint8",
               "Contains": {
-                "Name": "[]uint8",
                 "Type": "array",
+                "Name": "[]uint8",
                 "Contains": {
-                  "Name": "uint8",
-                  "Type": "number"
+                  "Type": "number",
+                  "Name": "uint8"
                 }
               }
             },
             "OwnerAddr": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             },
             "PeerId": {
-              "Name": "[]uint8",
               "Type": "array",
+              "Name": "[]uint8",
               "Contains": {
-                "Name": "uint8",
-                "Type": "number"
+                "Type": "number",
+                "Name": "uint8"
               }
             },
             "WindowPoStProofType": {
-              "Name": "RegisteredPoStProof",
-              "Type": "number"
+              "Type": "number",
+              "Name": "RegisteredPoStProof"
             },
             "WorkerAddr": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "10": {
         "Name": "DeclareFaults",
         "Param": {
-          "Name": "DeclareFaultsParams",
           "Type": "object",
+          "Name": "DeclareFaultsParams",
           "Children": {
             "Faults": {
-              "Name": "[]FaultDeclaration",
               "Type": "array",
+              "Name": "[]FaultDeclaration",
               "Contains": {
-                "Name": "FaultDeclaration",
                 "Type": "object",
+                "Name": "FaultDeclaration",
                 "Children": {
                   "Deadline": {
-                    "Name": "uint64",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "uint64"
                   },
                   "Partition": {
-                    "Name": "uint64",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "uint64"
                   },
                   "Sectors": {
-                    "Name": "BitField",
                     "Type": "array",
+                    "Name": "BitField",
                     "Contains": {
-                      "Name": "Bit",
-                      "Type": "number"
+                      "Type": "number",
+                      "Name": "Bit"
                     }
                   }
                 }
@@ -1453,37 +1453,37 @@
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "11": {
         "Name": "DeclareFaultsRecovered",
         "Param": {
-          "Name": "DeclareFaultsRecoveredParams",
           "Type": "object",
+          "Name": "DeclareFaultsRecoveredParams",
           "Children": {
             "Recoveries": {
-              "Name": "[]RecoveryDeclaration",
               "Type": "array",
+              "Name": "[]RecoveryDeclaration",
               "Contains": {
-                "Name": "RecoveryDeclaration",
                 "Type": "object",
+                "Name": "RecoveryDeclaration",
                 "Children": {
                   "Deadline": {
-                    "Name": "uint64",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "uint64"
                   },
                   "Partition": {
-                    "Name": "uint64",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "uint64"
                   },
                   "Sectors": {
-                    "Name": "BitField",
                     "Type": "array",
+                    "Name": "BitField",
                     "Contains": {
-                      "Name": "Bit",
-                      "Type": "number"
+                      "Type": "number",
+                      "Name": "Bit"
                     }
                   }
                 }
@@ -1492,279 +1492,279 @@
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "12": {
         "Name": "OnDeferredCronEvent",
         "Param": {
-          "Name": "DeferredCronEventParams",
           "Type": "object",
+          "Name": "DeferredCronEventParams",
           "Children": {
             "EventPayload": {
-              "Name": "[]uint8",
               "Type": "array",
+              "Name": "[]uint8",
               "Contains": {
-                "Name": "uint8",
-                "Type": "number"
+                "Type": "number",
+                "Name": "uint8"
               }
             },
             "QualityAdjPowerSmoothed": {
-              "Name": "FilterEstimate",
               "Type": "object",
+              "Name": "FilterEstimate",
               "Children": {
                 "PositionEstimate": {
-                  "Name": "FilecoinNumber",
-                  "Type": "string"
+                  "Type": "string",
+                  "Name": "FilecoinNumber"
                 },
                 "VelocityEstimate": {
-                  "Name": "FilecoinNumber",
-                  "Type": "string"
+                  "Type": "string",
+                  "Name": "FilecoinNumber"
                 }
               }
             },
             "RewardSmoothed": {
-              "Name": "FilterEstimate",
               "Type": "object",
+              "Name": "FilterEstimate",
               "Children": {
                 "PositionEstimate": {
-                  "Name": "FilecoinNumber",
-                  "Type": "string"
+                  "Type": "string",
+                  "Name": "FilecoinNumber"
                 },
                 "VelocityEstimate": {
-                  "Name": "FilecoinNumber",
-                  "Type": "string"
+                  "Type": "string",
+                  "Name": "FilecoinNumber"
                 }
               }
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "13": {
         "Name": "CheckSectorProven",
         "Param": {
-          "Name": "CheckSectorProvenParams",
           "Type": "object",
+          "Name": "CheckSectorProvenParams",
           "Children": {
             "SectorNumber": {
-              "Name": "SectorNumber",
-              "Type": "number"
+              "Type": "number",
+              "Name": "SectorNumber"
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "14": {
         "Name": "ApplyRewards",
         "Param": {
-          "Name": "ApplyRewardParams",
           "Type": "object",
+          "Name": "ApplyRewardParams",
           "Children": {
             "Penalty": {
-              "Name": "FilecoinNumber",
-              "Type": "string"
+              "Type": "string",
+              "Name": "FilecoinNumber"
             },
             "Reward": {
-              "Name": "FilecoinNumber",
-              "Type": "string"
+              "Type": "string",
+              "Name": "FilecoinNumber"
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "15": {
         "Name": "ReportConsensusFault",
         "Param": {
-          "Name": "ReportConsensusFaultParams",
           "Type": "object",
+          "Name": "ReportConsensusFaultParams",
           "Children": {
             "BlockHeader1": {
-              "Name": "[]uint8",
               "Type": "array",
+              "Name": "[]uint8",
               "Contains": {
-                "Name": "uint8",
-                "Type": "number"
+                "Type": "number",
+                "Name": "uint8"
               }
             },
             "BlockHeader2": {
-              "Name": "[]uint8",
               "Type": "array",
+              "Name": "[]uint8",
               "Contains": {
-                "Name": "uint8",
-                "Type": "number"
+                "Type": "number",
+                "Name": "uint8"
               }
             },
             "BlockHeaderExtra": {
-              "Name": "[]uint8",
               "Type": "array",
+              "Name": "[]uint8",
               "Contains": {
-                "Name": "uint8",
-                "Type": "number"
+                "Type": "number",
+                "Name": "uint8"
               }
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "16": {
         "Name": "WithdrawBalance",
         "Param": {
-          "Name": "WithdrawBalanceParams",
           "Type": "object",
+          "Name": "WithdrawBalanceParams",
           "Children": {
             "AmountRequested": {
-              "Name": "FilecoinNumber",
-              "Type": "string"
+              "Type": "string",
+              "Name": "FilecoinNumber"
             }
           }
         },
         "Return": {
-          "Name": "FilecoinNumber",
-          "Type": "string"
+          "Type": "string",
+          "Name": "FilecoinNumber"
         }
       },
       "17": {
         "Name": "ConfirmSectorProofsValid",
         "Param": {
-          "Name": "ConfirmSectorProofsParams",
           "Type": "object",
+          "Name": "ConfirmSectorProofsParams",
           "Children": {
             "QualityAdjPowerSmoothed": {
-              "Name": "FilterEstimate",
               "Type": "object",
+              "Name": "FilterEstimate",
               "Children": {
                 "PositionEstimate": {
-                  "Name": "FilecoinNumber",
-                  "Type": "string"
+                  "Type": "string",
+                  "Name": "FilecoinNumber"
                 },
                 "VelocityEstimate": {
-                  "Name": "FilecoinNumber",
-                  "Type": "string"
+                  "Type": "string",
+                  "Name": "FilecoinNumber"
                 }
               }
             },
             "RewardBaselinePower": {
-              "Name": "FilecoinNumber",
-              "Type": "string"
+              "Type": "string",
+              "Name": "FilecoinNumber"
             },
             "RewardSmoothed": {
-              "Name": "FilterEstimate",
               "Type": "object",
+              "Name": "FilterEstimate",
               "Children": {
                 "PositionEstimate": {
-                  "Name": "FilecoinNumber",
-                  "Type": "string"
+                  "Type": "string",
+                  "Name": "FilecoinNumber"
                 },
                 "VelocityEstimate": {
-                  "Name": "FilecoinNumber",
-                  "Type": "string"
+                  "Type": "string",
+                  "Name": "FilecoinNumber"
                 }
               }
             },
             "Sectors": {
-              "Name": "[]SectorNumber",
               "Type": "array",
+              "Name": "[]SectorNumber",
               "Contains": {
-                "Name": "SectorNumber",
-                "Type": "number"
+                "Type": "number",
+                "Name": "SectorNumber"
               }
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "18": {
         "Name": "ChangeMultiaddrs",
         "Param": {
-          "Name": "ChangeMultiaddrsParams",
           "Type": "object",
+          "Name": "ChangeMultiaddrsParams",
           "Children": {
             "NewMultiaddrs": {
-              "Name": "[][]uint8",
               "Type": "array",
+              "Name": "[][]uint8",
               "Contains": {
-                "Name": "[]uint8",
                 "Type": "array",
+                "Name": "[]uint8",
                 "Contains": {
-                  "Name": "uint8",
-                  "Type": "number"
+                  "Type": "number",
+                  "Name": "uint8"
                 }
               }
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "19": {
         "Name": "CompactPartitions",
         "Param": {
-          "Name": "CompactPartitionsParams",
           "Type": "object",
+          "Name": "CompactPartitionsParams",
           "Children": {
             "Deadline": {
-              "Name": "uint64",
-              "Type": "number"
+              "Type": "number",
+              "Name": "uint64"
             },
             "Partitions": {
-              "Name": "BitField",
               "Type": "array",
+              "Name": "BitField",
               "Contains": {
-                "Name": "Bit",
-                "Type": "number"
+                "Type": "number",
+                "Name": "Bit"
               }
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "2": {
         "Name": "ControlAddresses",
         "Param": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         },
         "Return": {
-          "Name": "GetControlAddressesReturn",
           "Type": "object",
+          "Name": "GetControlAddressesReturn",
           "Children": {
             "ControlAddrs": {
-              "Name": "[]Address",
               "Type": "array",
+              "Name": "[]Address",
               "Contains": {
-                "Name": "Address",
-                "Type": "string"
+                "Type": "string",
+                "Name": "Address"
               }
             },
             "Owner": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             },
             "Worker": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             }
           }
         }
@@ -1772,140 +1772,140 @@
       "20": {
         "Name": "CompactSectorNumbers",
         "Param": {
-          "Name": "CompactSectorNumbersParams",
           "Type": "object",
+          "Name": "CompactSectorNumbersParams",
           "Children": {
             "MaskSectorNumbers": {
-              "Name": "BitField",
               "Type": "array",
+              "Name": "BitField",
               "Contains": {
-                "Name": "Bit",
-                "Type": "number"
+                "Type": "number",
+                "Name": "Bit"
               }
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "21": {
         "Name": "ConfirmUpdateWorkerKey",
         "Param": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "22": {
         "Name": "RepayDebt",
         "Param": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "23": {
         "Name": "ChangeOwnerAddress",
         "Param": {
-          "Name": "Address",
-          "Type": "string"
+          "Type": "string",
+          "Name": "Address"
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "24": {
         "Name": "DisputeWindowedPoSt",
         "Param": {
-          "Name": "DisputeWindowedPoStParams",
           "Type": "object",
+          "Name": "DisputeWindowedPoStParams",
           "Children": {
             "Deadline": {
-              "Name": "uint64",
-              "Type": "number"
+              "Type": "number",
+              "Name": "uint64"
             },
             "PoStIndex": {
-              "Name": "uint64",
-              "Type": "number"
+              "Type": "number",
+              "Name": "uint64"
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "25": {
         "Name": "PreCommitSectorBatch",
         "Param": {
-          "Name": "PreCommitSectorBatchParams",
           "Type": "object",
+          "Name": "PreCommitSectorBatchParams",
           "Children": {
             "Sectors": {
-              "Name": "[]SectorPreCommitInfo",
               "Type": "array",
+              "Name": "[]SectorPreCommitInfo",
               "Contains": {
-                "Name": "SectorPreCommitInfo",
                 "Type": "object",
+                "Name": "SectorPreCommitInfo",
                 "Children": {
                   "DealIDs": {
-                    "Name": "[]DealID",
                     "Type": "array",
+                    "Name": "[]DealID",
                     "Contains": {
-                      "Name": "DealID",
-                      "Type": "number"
+                      "Type": "number",
+                      "Name": "DealID"
                     }
                   },
                   "Expiration": {
-                    "Name": "ChainEpoch",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "ChainEpoch"
                   },
                   "ReplaceCapacity": {
-                    "Name": "bool",
-                    "Type": "bool"
+                    "Type": "bool",
+                    "Name": "bool"
                   },
                   "ReplaceSectorDeadline": {
-                    "Name": "uint64",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "uint64"
                   },
                   "ReplaceSectorNumber": {
-                    "Name": "SectorNumber",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "SectorNumber"
                   },
                   "ReplaceSectorPartition": {
-                    "Name": "uint64",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "uint64"
                   },
                   "SealProof": {
-                    "Name": "RegisteredSealProof",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "RegisteredSealProof"
                   },
                   "SealRandEpoch": {
-                    "Name": "ChainEpoch",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "ChainEpoch"
                   },
                   "SealedCID": {
-                    "Name": "Cid",
                     "Type": "object",
+                    "Name": "Cid",
                     "Children": {
                       "/": {
-                        "Name": "CidString",
-                        "Type": "string"
+                        "Type": "string",
+                        "Name": "CidString"
                       }
                     }
                   },
                   "SectorNumber": {
-                    "Name": "SectorNumber",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "SectorNumber"
                   }
                 }
               }
@@ -1913,93 +1913,93 @@
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "26": {
         "Name": "ProveCommitAggregate",
         "Param": {
-          "Name": "ProveCommitAggregateParams",
           "Type": "object",
+          "Name": "ProveCommitAggregateParams",
           "Children": {
             "AggregateProof": {
-              "Name": "[]uint8",
               "Type": "array",
+              "Name": "[]uint8",
               "Contains": {
-                "Name": "uint8",
-                "Type": "number"
+                "Type": "number",
+                "Name": "uint8"
               }
             },
             "SectorNumbers": {
-              "Name": "BitField",
               "Type": "array",
+              "Name": "BitField",
               "Contains": {
-                "Name": "Bit",
-                "Type": "number"
+                "Type": "number",
+                "Name": "Bit"
               }
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "27": {
         "Name": "ProveReplicaUpdates",
         "Param": {
-          "Name": "ProveReplicaUpdatesParams",
           "Type": "object",
+          "Name": "ProveReplicaUpdatesParams",
           "Children": {
             "Updates": {
-              "Name": "[]ReplicaUpdate",
               "Type": "array",
+              "Name": "[]ReplicaUpdate",
               "Contains": {
-                "Name": "ReplicaUpdate",
                 "Type": "object",
+                "Name": "ReplicaUpdate",
                 "Children": {
                   "Deadline": {
-                    "Name": "uint64",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "uint64"
                   },
                   "Deals": {
-                    "Name": "[]DealID",
                     "Type": "array",
+                    "Name": "[]DealID",
                     "Contains": {
-                      "Name": "DealID",
-                      "Type": "number"
+                      "Type": "number",
+                      "Name": "DealID"
                     }
                   },
                   "NewSealedSectorCID": {
-                    "Name": "Cid",
                     "Type": "object",
+                    "Name": "Cid",
                     "Children": {
                       "/": {
-                        "Name": "CidString",
-                        "Type": "string"
+                        "Type": "string",
+                        "Name": "CidString"
                       }
                     }
                   },
                   "Partition": {
-                    "Name": "uint64",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "uint64"
                   },
                   "ReplicaProof": {
-                    "Name": "[]uint8",
                     "Type": "array",
+                    "Name": "[]uint8",
                     "Contains": {
-                      "Name": "uint8",
-                      "Type": "number"
+                      "Type": "number",
+                      "Name": "uint8"
                     }
                   },
                   "SectorID": {
-                    "Name": "SectorNumber",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "SectorNumber"
                   },
                   "UpdateProofType": {
-                    "Name": "RegisteredUpdateProof",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "RegisteredUpdateProof"
                   }
                 }
               }
@@ -2007,121 +2007,121 @@
           }
         },
         "Return": {
-          "Name": "BitField",
           "Type": "array",
+          "Name": "BitField",
           "Contains": {
-            "Name": "Bit",
-            "Type": "number"
+            "Type": "number",
+            "Name": "Bit"
           }
         }
       },
       "3": {
         "Name": "ChangeWorkerAddress",
         "Param": {
-          "Name": "ChangeWorkerAddressParams",
           "Type": "object",
+          "Name": "ChangeWorkerAddressParams",
           "Children": {
             "NewControlAddrs": {
-              "Name": "[]Address",
               "Type": "array",
+              "Name": "[]Address",
               "Contains": {
-                "Name": "Address",
-                "Type": "string"
+                "Type": "string",
+                "Name": "Address"
               }
             },
             "NewWorker": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "4": {
         "Name": "ChangePeerID",
         "Param": {
-          "Name": "ChangePeerIDParams",
           "Type": "object",
+          "Name": "ChangePeerIDParams",
           "Children": {
             "NewID": {
-              "Name": "[]uint8",
               "Type": "array",
+              "Name": "[]uint8",
               "Contains": {
-                "Name": "uint8",
-                "Type": "number"
+                "Type": "number",
+                "Name": "uint8"
               }
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "5": {
         "Name": "SubmitWindowedPoSt",
         "Param": {
-          "Name": "SubmitWindowedPoStParams",
           "Type": "object",
+          "Name": "SubmitWindowedPoStParams",
           "Children": {
             "ChainCommitEpoch": {
-              "Name": "ChainEpoch",
-              "Type": "number"
+              "Type": "number",
+              "Name": "ChainEpoch"
             },
             "ChainCommitRand": {
-              "Name": "[]uint8",
               "Type": "array",
+              "Name": "[]uint8",
               "Contains": {
-                "Name": "uint8",
-                "Type": "number"
+                "Type": "number",
+                "Name": "uint8"
               }
             },
             "Deadline": {
-              "Name": "uint64",
-              "Type": "number"
+              "Type": "number",
+              "Name": "uint64"
             },
             "Partitions": {
-              "Name": "[]PoStPartition",
               "Type": "array",
+              "Name": "[]PoStPartition",
               "Contains": {
-                "Name": "PoStPartition",
                 "Type": "object",
+                "Name": "PoStPartition",
                 "Children": {
                   "Index": {
-                    "Name": "uint64",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "uint64"
                   },
                   "Skipped": {
-                    "Name": "BitField",
                     "Type": "array",
+                    "Name": "BitField",
                     "Contains": {
-                      "Name": "Bit",
-                      "Type": "number"
+                      "Type": "number",
+                      "Name": "Bit"
                     }
                   }
                 }
               }
             },
             "Proofs": {
-              "Name": "[]PoStProof",
               "Type": "array",
+              "Name": "[]PoStProof",
               "Contains": {
-                "Name": "PoStProof",
                 "Type": "object",
+                "Name": "PoStProof",
                 "Children": {
                   "PoStProof": {
-                    "Name": "RegisteredPoStProof",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "RegisteredPoStProof"
                   },
                   "ProofBytes": {
-                    "Name": "[]uint8",
                     "Type": "array",
+                    "Name": "[]uint8",
                     "Contains": {
-                      "Name": "uint8",
-                      "Type": "number"
+                      "Type": "number",
+                      "Name": "uint8"
                     }
                   }
                 }
@@ -2130,129 +2130,129 @@
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "6": {
         "Name": "PreCommitSector",
         "Param": {
-          "Name": "SectorPreCommitInfo",
           "Type": "object",
+          "Name": "SectorPreCommitInfo",
           "Children": {
             "DealIDs": {
-              "Name": "[]DealID",
               "Type": "array",
+              "Name": "[]DealID",
               "Contains": {
-                "Name": "DealID",
-                "Type": "number"
+                "Type": "number",
+                "Name": "DealID"
               }
             },
             "Expiration": {
-              "Name": "ChainEpoch",
-              "Type": "number"
+              "Type": "number",
+              "Name": "ChainEpoch"
             },
             "ReplaceCapacity": {
-              "Name": "bool",
-              "Type": "bool"
+              "Type": "bool",
+              "Name": "bool"
             },
             "ReplaceSectorDeadline": {
-              "Name": "uint64",
-              "Type": "number"
+              "Type": "number",
+              "Name": "uint64"
             },
             "ReplaceSectorNumber": {
-              "Name": "SectorNumber",
-              "Type": "number"
+              "Type": "number",
+              "Name": "SectorNumber"
             },
             "ReplaceSectorPartition": {
-              "Name": "uint64",
-              "Type": "number"
+              "Type": "number",
+              "Name": "uint64"
             },
             "SealProof": {
-              "Name": "RegisteredSealProof",
-              "Type": "number"
+              "Type": "number",
+              "Name": "RegisteredSealProof"
             },
             "SealRandEpoch": {
-              "Name": "ChainEpoch",
-              "Type": "number"
+              "Type": "number",
+              "Name": "ChainEpoch"
             },
             "SealedCID": {
-              "Name": "Cid",
               "Type": "object",
+              "Name": "Cid",
               "Children": {
                 "/": {
-                  "Name": "CidString",
-                  "Type": "string"
+                  "Type": "string",
+                  "Name": "CidString"
                 }
               }
             },
             "SectorNumber": {
-              "Name": "SectorNumber",
-              "Type": "number"
+              "Type": "number",
+              "Name": "SectorNumber"
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "7": {
         "Name": "ProveCommitSector",
         "Param": {
-          "Name": "ProveCommitSectorParams",
           "Type": "object",
+          "Name": "ProveCommitSectorParams",
           "Children": {
             "Proof": {
-              "Name": "[]uint8",
               "Type": "array",
+              "Name": "[]uint8",
               "Contains": {
-                "Name": "uint8",
-                "Type": "number"
+                "Type": "number",
+                "Name": "uint8"
               }
             },
             "SectorNumber": {
-              "Name": "SectorNumber",
-              "Type": "number"
+              "Type": "number",
+              "Name": "SectorNumber"
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "8": {
         "Name": "ExtendSectorExpiration",
         "Param": {
-          "Name": "ExtendSectorExpirationParams",
           "Type": "object",
+          "Name": "ExtendSectorExpirationParams",
           "Children": {
             "Extensions": {
-              "Name": "[]ExpirationExtension",
               "Type": "array",
+              "Name": "[]ExpirationExtension",
               "Contains": {
-                "Name": "ExpirationExtension",
                 "Type": "object",
+                "Name": "ExpirationExtension",
                 "Children": {
                   "Deadline": {
-                    "Name": "uint64",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "uint64"
                   },
                   "NewExpiration": {
-                    "Name": "ChainEpoch",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "ChainEpoch"
                   },
                   "Partition": {
-                    "Name": "uint64",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "uint64"
                   },
                   "Sectors": {
-                    "Name": "BitField",
                     "Type": "array",
+                    "Name": "BitField",
                     "Contains": {
-                      "Name": "Bit",
-                      "Type": "number"
+                      "Type": "number",
+                      "Name": "Bit"
                     }
                   }
                 }
@@ -2261,37 +2261,37 @@
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "9": {
         "Name": "TerminateSectors",
         "Param": {
-          "Name": "TerminateSectorsParams",
           "Type": "object",
+          "Name": "TerminateSectorsParams",
           "Children": {
             "Terminations": {
-              "Name": "[]TerminationDeclaration",
               "Type": "array",
+              "Name": "[]TerminationDeclaration",
               "Contains": {
-                "Name": "TerminationDeclaration",
                 "Type": "object",
+                "Name": "TerminationDeclaration",
                 "Children": {
                   "Deadline": {
-                    "Name": "uint64",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "uint64"
                   },
                   "Partition": {
-                    "Name": "uint64",
-                    "Type": "number"
+                    "Type": "number",
+                    "Name": "uint64"
                   },
                   "Sectors": {
-                    "Name": "BitField",
                     "Type": "array",
+                    "Name": "BitField",
                     "Contains": {
-                      "Name": "Bit",
-                      "Type": "number"
+                      "Type": "number",
+                      "Name": "Bit"
                     }
                   }
                 }
@@ -2300,12 +2300,12 @@
           }
         },
         "Return": {
-          "Name": "TerminateSectorsReturn",
           "Type": "object",
+          "Name": "TerminateSectorsReturn",
           "Children": {
             "Done": {
-              "Name": "bool",
-              "Type": "bool"
+              "Type": "bool",
+              "Name": "bool"
             }
           }
         }
@@ -2315,157 +2315,157 @@
   "storagepower": {
     "State": {
       "Claims": {
-        "Name": "Cid",
         "Type": "object",
+        "Name": "Cid",
         "Children": {
           "/": {
-            "Name": "CidString",
-            "Type": "string"
+            "Type": "string",
+            "Name": "CidString"
           }
         }
       },
       "CronEventQueue": {
-        "Name": "Cid",
         "Type": "object",
+        "Name": "Cid",
         "Children": {
           "/": {
-            "Name": "CidString",
-            "Type": "string"
+            "Type": "string",
+            "Name": "CidString"
           }
         }
       },
       "FirstCronEpoch": {
-        "Name": "ChainEpoch",
-        "Type": "number"
+        "Type": "number",
+        "Name": "ChainEpoch"
       },
       "MinerAboveMinPowerCount": {
-        "Name": "int64",
-        "Type": "number"
+        "Type": "number",
+        "Name": "int64"
       },
       "MinerCount": {
-        "Name": "int64",
-        "Type": "number"
+        "Type": "number",
+        "Name": "int64"
       },
       "ProofValidationBatch": {
-        "Name": "Cid",
         "Type": "object",
+        "Name": "Cid",
         "Children": {
           "/": {
-            "Name": "CidString",
-            "Type": "string"
+            "Type": "string",
+            "Name": "CidString"
           }
         }
       },
       "ThisEpochPledgeCollateral": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       },
       "ThisEpochQAPowerSmoothed": {
-        "Name": "FilterEstimate",
         "Type": "object",
+        "Name": "FilterEstimate",
         "Children": {
           "PositionEstimate": {
-            "Name": "FilecoinNumber",
-            "Type": "string"
+            "Type": "string",
+            "Name": "FilecoinNumber"
           },
           "VelocityEstimate": {
-            "Name": "FilecoinNumber",
-            "Type": "string"
+            "Type": "string",
+            "Name": "FilecoinNumber"
           }
         }
       },
       "ThisEpochQualityAdjPower": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       },
       "ThisEpochRawBytePower": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       },
       "TotalBytesCommitted": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       },
       "TotalPledgeCollateral": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       },
       "TotalQABytesCommitted": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       },
       "TotalQualityAdjPower": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       },
       "TotalRawBytePower": {
-        "Name": "FilecoinNumber",
-        "Type": "string"
+        "Type": "string",
+        "Name": "FilecoinNumber"
       }
     },
     "Methods": {
       "1": {
         "Name": "Constructor",
         "Param": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "2": {
         "Name": "CreateMiner",
         "Param": {
-          "Name": "CreateMinerParams",
           "Type": "object",
+          "Name": "CreateMinerParams",
           "Children": {
             "Multiaddrs": {
-              "Name": "[][]uint8",
               "Type": "array",
+              "Name": "[][]uint8",
               "Contains": {
-                "Name": "[]uint8",
                 "Type": "array",
+                "Name": "[]uint8",
                 "Contains": {
-                  "Name": "uint8",
-                  "Type": "number"
+                  "Type": "number",
+                  "Name": "uint8"
                 }
               }
             },
             "Owner": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             },
             "Peer": {
-              "Name": "[]uint8",
               "Type": "array",
+              "Name": "[]uint8",
               "Contains": {
-                "Name": "uint8",
-                "Type": "number"
+                "Type": "number",
+                "Name": "uint8"
               }
             },
             "WindowPoStProofType": {
-              "Name": "RegisteredPoStProof",
-              "Type": "number"
+              "Type": "number",
+              "Name": "RegisteredPoStProof"
             },
             "Worker": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             }
           }
         },
         "Return": {
-          "Name": "CreateMinerReturn",
           "Type": "object",
+          "Name": "CreateMinerReturn",
           "Children": {
             "IDAddress": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             },
             "RobustAddress": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             }
           }
         }
@@ -2473,189 +2473,189 @@
       "3": {
         "Name": "UpdateClaimedPower",
         "Param": {
-          "Name": "UpdateClaimedPowerParams",
           "Type": "object",
+          "Name": "UpdateClaimedPowerParams",
           "Children": {
             "QualityAdjustedDelta": {
-              "Name": "FilecoinNumber",
-              "Type": "string"
+              "Type": "string",
+              "Name": "FilecoinNumber"
             },
             "RawByteDelta": {
-              "Name": "FilecoinNumber",
-              "Type": "string"
+              "Type": "string",
+              "Name": "FilecoinNumber"
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "4": {
         "Name": "EnrollCronEvent",
         "Param": {
-          "Name": "EnrollCronEventParams",
           "Type": "object",
+          "Name": "EnrollCronEventParams",
           "Children": {
             "EventEpoch": {
-              "Name": "ChainEpoch",
-              "Type": "number"
+              "Type": "number",
+              "Name": "ChainEpoch"
             },
             "Payload": {
-              "Name": "[]uint8",
               "Type": "array",
+              "Name": "[]uint8",
               "Contains": {
-                "Name": "uint8",
-                "Type": "number"
+                "Type": "number",
+                "Name": "uint8"
               }
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "5": {
         "Name": "CronTick",
         "Param": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "6": {
         "Name": "UpdatePledgeTotal",
         "Param": {
-          "Name": "FilecoinNumber",
-          "Type": "string"
+          "Type": "string",
+          "Name": "FilecoinNumber"
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "8": {
         "Name": "SubmitPoRepForBulkVerify",
         "Param": {
-          "Name": "SealVerifyInfo",
           "Type": "object",
+          "Name": "SealVerifyInfo",
           "Children": {
             "DealIDs": {
-              "Name": "[]DealID",
               "Type": "array",
+              "Name": "[]DealID",
               "Contains": {
-                "Name": "DealID",
-                "Type": "number"
+                "Type": "number",
+                "Name": "DealID"
               }
             },
             "InteractiveRandomness": {
-              "Name": "[]uint8",
               "Type": "array",
+              "Name": "[]uint8",
               "Contains": {
-                "Name": "uint8",
-                "Type": "number"
+                "Type": "number",
+                "Name": "uint8"
               }
             },
             "Proof": {
-              "Name": "[]uint8",
               "Type": "array",
+              "Name": "[]uint8",
               "Contains": {
-                "Name": "uint8",
-                "Type": "number"
+                "Type": "number",
+                "Name": "uint8"
               }
             },
             "Randomness": {
-              "Name": "[]uint8",
               "Type": "array",
+              "Name": "[]uint8",
               "Contains": {
-                "Name": "uint8",
-                "Type": "number"
+                "Type": "number",
+                "Name": "uint8"
               }
             },
             "SealProof": {
-              "Name": "RegisteredSealProof",
-              "Type": "number"
+              "Type": "number",
+              "Name": "RegisteredSealProof"
             },
             "SealedCID": {
-              "Name": "Cid",
               "Type": "object",
+              "Name": "Cid",
               "Children": {
                 "/": {
-                  "Name": "CidString",
-                  "Type": "string"
+                  "Type": "string",
+                  "Name": "CidString"
                 }
               }
             },
             "SectorID": {
-              "Name": "SectorID",
               "Type": "object",
+              "Name": "SectorID",
               "Children": {
                 "Miner": {
-                  "Name": "ActorID",
-                  "Type": "number"
+                  "Type": "number",
+                  "Name": "ActorID"
                 },
                 "Number": {
-                  "Name": "SectorNumber",
-                  "Type": "number"
+                  "Type": "number",
+                  "Name": "SectorNumber"
                 }
               }
             },
             "UnsealedCID": {
-              "Name": "Cid",
               "Type": "object",
+              "Name": "Cid",
               "Children": {
                 "/": {
-                  "Name": "CidString",
-                  "Type": "string"
+                  "Type": "string",
+                  "Name": "CidString"
                 }
               }
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "9": {
         "Name": "CurrentTotalPower",
         "Param": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         },
         "Return": {
-          "Name": "CurrentTotalPowerReturn",
           "Type": "object",
+          "Name": "CurrentTotalPowerReturn",
           "Children": {
             "PledgeCollateral": {
-              "Name": "FilecoinNumber",
-              "Type": "string"
+              "Type": "string",
+              "Name": "FilecoinNumber"
             },
             "QualityAdjPower": {
-              "Name": "FilecoinNumber",
-              "Type": "string"
+              "Type": "string",
+              "Name": "FilecoinNumber"
             },
             "QualityAdjPowerSmoothed": {
-              "Name": "FilterEstimate",
               "Type": "object",
+              "Name": "FilterEstimate",
               "Children": {
                 "PositionEstimate": {
-                  "Name": "FilecoinNumber",
-                  "Type": "string"
+                  "Type": "string",
+                  "Name": "FilecoinNumber"
                 },
                 "VelocityEstimate": {
-                  "Name": "FilecoinNumber",
-                  "Type": "string"
+                  "Type": "string",
+                  "Name": "FilecoinNumber"
                 }
               }
             },
             "RawBytePower": {
-              "Name": "FilecoinNumber",
-              "Type": "string"
+              "Type": "string",
+              "Name": "FilecoinNumber"
             }
           }
         }
@@ -2665,12 +2665,12 @@
   "system": {
     "State": {
       "BuiltinActors": {
-        "Name": "Cid",
         "Type": "object",
+        "Name": "Cid",
         "Children": {
           "/": {
-            "Name": "CidString",
-            "Type": "string"
+            "Type": "string",
+            "Name": "CidString"
           }
         }
       }
@@ -2680,36 +2680,36 @@
   "verifiedregistry": {
     "State": {
       "RemoveDataCapProposalIDs": {
-        "Name": "Cid",
         "Type": "object",
+        "Name": "Cid",
         "Children": {
           "/": {
-            "Name": "CidString",
-            "Type": "string"
+            "Type": "string",
+            "Name": "CidString"
           }
         }
       },
       "RootKey": {
-        "Name": "Address",
-        "Type": "string"
+        "Type": "string",
+        "Name": "Address"
       },
       "VerifiedClients": {
-        "Name": "Cid",
         "Type": "object",
+        "Name": "Cid",
         "Children": {
           "/": {
-            "Name": "CidString",
-            "Type": "string"
+            "Type": "string",
+            "Name": "CidString"
           }
         }
       },
       "Verifiers": {
-        "Name": "Cid",
         "Type": "object",
+        "Name": "Cid",
         "Children": {
           "/": {
-            "Name": "CidString",
-            "Type": "string"
+            "Type": "string",
+            "Name": "CidString"
           }
         }
       }
@@ -2718,174 +2718,174 @@
       "1": {
         "Name": "Constructor",
         "Param": {
-          "Name": "Address",
-          "Type": "string"
+          "Type": "string",
+          "Name": "Address"
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "2": {
         "Name": "AddVerifier",
         "Param": {
-          "Name": "AddVerifierParams",
           "Type": "object",
+          "Name": "AddVerifierParams",
           "Children": {
             "Address": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             },
             "Allowance": {
-              "Name": "FilecoinNumber",
-              "Type": "string"
+              "Type": "string",
+              "Name": "FilecoinNumber"
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "3": {
         "Name": "RemoveVerifier",
         "Param": {
-          "Name": "Address",
-          "Type": "string"
+          "Type": "string",
+          "Name": "Address"
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "4": {
         "Name": "AddVerifiedClient",
         "Param": {
-          "Name": "AddVerifiedClientParams",
           "Type": "object",
+          "Name": "AddVerifiedClientParams",
           "Children": {
             "Address": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             },
             "Allowance": {
-              "Name": "FilecoinNumber",
-              "Type": "string"
+              "Type": "string",
+              "Name": "FilecoinNumber"
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "5": {
         "Name": "UseBytes",
         "Param": {
-          "Name": "UseBytesParams",
           "Type": "object",
+          "Name": "UseBytesParams",
           "Children": {
             "Address": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             },
             "DealSize": {
-              "Name": "FilecoinNumber",
-              "Type": "string"
+              "Type": "string",
+              "Name": "FilecoinNumber"
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "6": {
         "Name": "RestoreBytes",
         "Param": {
-          "Name": "RestoreBytesParams",
           "Type": "object",
+          "Name": "RestoreBytesParams",
           "Children": {
             "Address": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             },
             "DealSize": {
-              "Name": "FilecoinNumber",
-              "Type": "string"
+              "Type": "string",
+              "Name": "FilecoinNumber"
             }
           }
         },
         "Return": {
-          "Name": "EmptyValue",
-          "Type": "object"
+          "Type": "object",
+          "Name": "EmptyValue"
         }
       },
       "7": {
         "Name": "RemoveVerifiedClientDataCap",
         "Param": {
-          "Name": "RemoveDataCapParams",
           "Type": "object",
+          "Name": "RemoveDataCapParams",
           "Children": {
             "DataCapAmountToRemove": {
-              "Name": "FilecoinNumber",
-              "Type": "string"
+              "Type": "string",
+              "Name": "FilecoinNumber"
             },
             "VerifiedClientToRemove": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             },
             "VerifierRequest1": {
-              "Name": "RemoveDataCapRequest",
               "Type": "object",
+              "Name": "RemoveDataCapRequest",
               "Children": {
                 "Verifier": {
-                  "Name": "Address",
-                  "Type": "string"
+                  "Type": "string",
+                  "Name": "Address"
                 },
                 "VerifierSignature": {
-                  "Name": "Signature",
                   "Type": "object",
+                  "Name": "Signature",
                   "Children": {
                     "Data": {
-                      "Name": "[]uint8",
                       "Type": "array",
+                      "Name": "[]uint8",
                       "Contains": {
-                        "Name": "uint8",
-                        "Type": "number"
+                        "Type": "number",
+                        "Name": "uint8"
                       }
                     },
                     "Type": {
-                      "Name": "SigType",
-                      "Type": "number"
+                      "Type": "number",
+                      "Name": "SigType"
                     }
                   }
                 }
               }
             },
             "VerifierRequest2": {
-              "Name": "RemoveDataCapRequest",
               "Type": "object",
+              "Name": "RemoveDataCapRequest",
               "Children": {
                 "Verifier": {
-                  "Name": "Address",
-                  "Type": "string"
+                  "Type": "string",
+                  "Name": "Address"
                 },
                 "VerifierSignature": {
-                  "Name": "Signature",
                   "Type": "object",
+                  "Name": "Signature",
                   "Children": {
                     "Data": {
-                      "Name": "[]uint8",
                       "Type": "array",
+                      "Name": "[]uint8",
                       "Contains": {
-                        "Name": "uint8",
-                        "Type": "number"
+                        "Type": "number",
+                        "Name": "uint8"
                       }
                     },
                     "Type": {
-                      "Name": "SigType",
-                      "Type": "number"
+                      "Type": "number",
+                      "Name": "SigType"
                     }
                   }
                 }
@@ -2894,16 +2894,16 @@
           }
         },
         "Return": {
-          "Name": "RemoveDataCapReturn",
           "Type": "object",
+          "Name": "RemoveDataCapReturn",
           "Children": {
             "DataCapRemoved": {
-              "Name": "FilecoinNumber",
-              "Type": "string"
+              "Type": "string",
+              "Name": "FilecoinNumber"
             },
             "VerifiedClient": {
-              "Name": "Address",
-              "Type": "string"
+              "Type": "string",
+              "Name": "Address"
             }
           }
         }
