@@ -65,6 +65,14 @@ func GetDataType(t reflect.Type) DataType {
 		dataType.Type = DataTypeString
 		return dataType
 
+	case reflect.Map:
+		keyType := GetDataType(t.Key())
+		containsType := GetDataType(t.Elem())
+		dataType.Type = DataTypeMap
+		dataType.Key = &keyType
+		dataType.Contains = &containsType
+		return dataType
+
 	case reflect.Array, reflect.Slice:
 		containsType := GetDataType(t.Elem())
 		dataType.Name = "[]" + containsType.Name
