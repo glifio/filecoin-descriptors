@@ -61,7 +61,7 @@ func main() {
 	 * Actor descriptors
 	 */
 
-	var actorDescriptorMap = ActorDescriptors{}
+	var actorDescriptors = ActorDescriptors{}
 	for name, reflectableActor := range reflectableActors {
 
 		// State reflection
@@ -72,7 +72,7 @@ func main() {
 		}
 
 		// Methods reflection
-		var actorMethodMap = ActorMethods{}
+		var actorMethods = ActorMethods{}
 		for key, method := range reflectableActor.Methods {
 			var actorMethod ActorMethod
 			methodType := reflect.TypeOf(method)
@@ -106,18 +106,18 @@ func main() {
 			actorMethod.Return = methodDataType.Returns[0]
 
 			// Store method in map
-			actorMethodMap[key] = actorMethod
+			actorMethods[key] = actorMethod
 		}
 
 		// Set actor descriptor
-		actorDescriptorMap[name] = ActorDescriptor{
+		actorDescriptors[name] = ActorDescriptor{
 			State:   stateDataType.Children,
-			Methods: actorMethodMap,
+			Methods: actorMethods,
 		}
 	}
 
 	// Write actor descriptors to JSON file
-	if err := writeJsonFile(actorDescriptorMap, "actor-descriptors"); err != nil {
+	if err := writeJsonFile(actorDescriptors, "actor-descriptors"); err != nil {
 		log.Fatalf("Failed to write actor descriptors to JSON file: %v", err)
 	}
 
