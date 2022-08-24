@@ -41,6 +41,6 @@ type ActorMethod = struct {
 
 type ActorDescriptors = map[ActorName]ActorDescriptor
 type ActorDescriptor struct {
-	State   DataTypeMap
+	State   DataTypes
 	Methods ActorMethods
 }
