@@ -32,7 +32,7 @@ func (l *Lotus) Close() {
 	l.rpcCloser()
 }
 
-func (l *Lotus) GetActorCodes() (ActorCodes, error) {
+func (l *Lotus) GetActorCodeMap() (ActorCodeMap, error) {
 	addr, err := address.NewFromString("f00")
 	if err != nil {
 		return nil, err
@@ -60,10 +60,10 @@ func (l *Lotus) GetActorCodes() (ActorCodes, error) {
 		return nil, err
 	}
 
-	var actorCodes = ActorCodes{}
+	var actorCodeMap = ActorCodeMap{}
 	for _, entry := range data.Entries {
-		actorCodes[entry.Name] = entry.Code.String()
+		actorCodeMap[entry.Name] = entry.Code.String()
 	}
 
-	return actorCodes, nil
+	return actorCodeMap, nil
 }

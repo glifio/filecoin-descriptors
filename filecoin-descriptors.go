@@ -10,8 +10,6 @@ import (
 	"strings"
 
 	"reflect"
-
-	"github.com/filecoin-project/lotus/node/modules/dtypes"
 )
 
 var apiUrls = []string{
@@ -33,7 +31,7 @@ func main() {
 	 * Actor codes
 	 */
 
-	var networkActorCodes = map[dtypes.NetworkName]ActorCodes{}
+	var networkActorCodeMap = NetworkActorCodeMap{}
 
 	for _, url := range apiUrls {
 
@@ -51,17 +49,17 @@ func main() {
 		}
 
 		// Retrieve actor codes from Lotus
-		actorCodes, err := lotus.GetActorCodes()
+		actorCodeMap, err := lotus.GetActorCodeMap()
 		if err != nil {
 			log.Fatalf("Failed to get actor codes: %v", err)
 		}
 
 		// Store actor codes in map
-		networkActorCodes[networkName] = actorCodes
+		networkActorCodeMap[networkName] = actorCodeMap
 	}
 
 	// Write actor codes
-	if err := writeJsonFile(networkActorCodes, "actor-codes"); err != nil {
+	if err := writeJsonFile(networkActorCodeMap, "actor-codes"); err != nil {
 		log.Fatalf("Failed to write actor codes to JSON file: %v", err)
 	}
 
@@ -69,7 +67,7 @@ func main() {
 	 * Actor descriptors
 	 */
 
-	var actorDescriptors = ActorDescriptors{}
+	var actorDescriptorMap = ActorDescriptorMap{}
 	for name, reflectableActor := range reflectableActors {
 
 		// State reflection
@@ -80,7 +78,7 @@ func main() {
 		}
 
 		// Methods reflection
-		var actorMethods = ActorMethods{}
+		var actorMethodMap = ActorMethodMap{}
 		for key, method := range reflectableActor.Methods {
 			var actorMethod ActorMethod
 			methodType := reflect.TypeOf(method)
@@ -114,18 +112,18 @@ func main() {
 			actorMethod.Return = methodDataType.Returns[0]
 
 			// Store method in map
-			actorMethods[key] = actorMethod
+			actorMethodMap[key] = actorMethod
 		}
 
 		// Set actor descriptor
-		actorDescriptors[name] = ActorDescriptor{
+		actorDescriptorMap[name] = ActorDescriptor{
 			State:   stateDataType.Children,
-			Methods: actorMethods,
+			Methods: actorMethodMap,
 		}
 	}
 
 	// Write actor descriptors to JSON file
-	if err := writeJsonFile(actorDescriptors, "actor-descriptors"); err != nil {
+	if err := writeJsonFile(actorDescriptorMap, "actor-descriptors"); err != nil {
 		log.Fatalf("Failed to write actor descriptors to JSON file: %v", err)
 	}
 

@@ -40,7 +40,7 @@ func GetDataType(t reflect.Type) DataType {
 
 	case cidType.String():
 		dataType.Type = TypeObject
-		dataType.Children = DataTypes{}
+		dataType.Children = DataTypeMap{}
 		dataType.Children["/"] = DataType{Name: "CidString", Type: TypeString}
 		return dataType
 	}
@@ -89,7 +89,7 @@ func GetDataType(t reflect.Type) DataType {
 
 	case reflect.Struct:
 		dataType.Type = TypeObject
-		dataType.Children = DataTypes{}
+		dataType.Children = DataTypeMap{}
 		for i := 0; i < t.NumField(); i++ {
 			f := t.Field(i)
 			dataType.Children[f.Name] = GetDataType(f.Type)
@@ -109,7 +109,7 @@ func GetDataType(t reflect.Type) DataType {
 
 	case reflect.Interface:
 		dataType.Type = TypeInterface
-		dataType.Methods = DataTypes{}
+		dataType.Methods = DataTypeMap{}
 		for i := 0; i < t.NumMethod(); i++ {
 			m := t.Method(i)
 			dataType.Methods[m.Name] = GetDataType(m.Type)
