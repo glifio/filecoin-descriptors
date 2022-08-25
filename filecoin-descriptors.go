@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -9,6 +10,8 @@ import (
 	"strings"
 
 	"reflect"
+
+	"github.com/filecoin-project/lotus/node/modules/dtypes"
 )
 
 var apiUrls = []string{
@@ -30,6 +33,8 @@ func main() {
 	 * Actor codes
 	 */
 
+	var networkActorCodes = map[dtypes.NetworkName]ActorCodes{}
+
 	for _, url := range apiUrls {
 
 		// Open Lotus API for network
@@ -39,18 +44,25 @@ func main() {
 		}
 		defer lotus.Close()
 
+		// Retrieve network name from Lotus
+		networkName, err := lotus.api.StateNetworkName(context.Background())
+		if err != nil {
+			log.Fatalf("Failed to get network name: %s", err)
+		}
+
 		// Retrieve actor codes from Lotus
 		actorCodes, err := lotus.GetActorCodes()
 		if err != nil {
 			log.Fatalf("Failed to get actor codes: %v", err)
 		}
 
-		// Print actor codes
-		fmt.Printf("Network: %s\n", network.Code)
-		for name, code := range actorCodes {
-			fmt.Printf("Actor: %s, Code: %s\n", name, code)
-		}
-		fmt.Print("\n")
+		// Store actor codes in map
+		networkActorCodes[networkName] = actorCodes
+	}
+
+	// Write actor codes
+	if err := writeJsonFile(networkActorCodes, "actor-codes"); err != nil {
+		log.Fatalf("Failed to write actor codes to JSON file: %v", err)
 	}
 
 	/*
