@@ -24,24 +24,24 @@ func GetDataType(t reflect.Type) DataType {
 	switch t.String() {
 
 	case addressType.String():
-		dataType.Type = DataTypeString
+		dataType.Type = TypeString
 		return dataType
 
 	case bigIntType.String():
 		dataType.Name = "FilecoinNumber"
-		dataType.Type = DataTypeString
+		dataType.Type = TypeString
 		return dataType
 
 	case bitFieldType.String():
-		containsType := DataType{Name: "Bit", Type: DataTypeNumber}
-		dataType.Type = DataTypeArray
+		containsType := DataType{Name: "Bit", Type: TypeNumber}
+		dataType.Type = TypeArray
 		dataType.Contains = &containsType
 		return dataType
 
 	case cidType.String():
-		dataType.Type = DataTypeObject
+		dataType.Type = TypeObject
 		dataType.Children = DataTypes{}
-		dataType.Children["/"] = DataType{Name: "CidString", Type: DataTypeString}
+		dataType.Children["/"] = DataType{Name: "CidString", Type: TypeString}
 		return dataType
 	}
 
@@ -52,22 +52,22 @@ func GetDataType(t reflect.Type) DataType {
 		return GetDataType(t.Elem())
 
 	case reflect.Bool:
-		dataType.Type = DataTypeBool
+		dataType.Type = TypeBool
 		return dataType
 
 	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64,
 		reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64,
 		reflect.Float32, reflect.Float64, reflect.Complex64, reflect.Complex128:
-		dataType.Type = DataTypeNumber
+		dataType.Type = TypeNumber
 		return dataType
 
 	case reflect.String:
-		dataType.Type = DataTypeString
+		dataType.Type = TypeString
 		return dataType
 
 	case reflect.Chan:
 		containsType := GetDataType(t.Elem())
-		dataType.Type = DataTypeChan
+		dataType.Type = TypeChan
 		dataType.ChanDir = t.ChanDir().String()
 		dataType.Contains = &containsType
 		return dataType
@@ -75,7 +75,7 @@ func GetDataType(t reflect.Type) DataType {
 	case reflect.Map:
 		keyType := GetDataType(t.Key())
 		containsType := GetDataType(t.Elem())
-		dataType.Type = DataTypeMap
+		dataType.Type = TypeMap
 		dataType.Key = &keyType
 		dataType.Contains = &containsType
 		return dataType
@@ -83,12 +83,12 @@ func GetDataType(t reflect.Type) DataType {
 	case reflect.Array, reflect.Slice:
 		containsType := GetDataType(t.Elem())
 		dataType.Name = "[]" + containsType.Name
-		dataType.Type = DataTypeArray
+		dataType.Type = TypeArray
 		dataType.Contains = &containsType
 		return dataType
 
 	case reflect.Struct:
-		dataType.Type = DataTypeObject
+		dataType.Type = TypeObject
 		dataType.Children = DataTypes{}
 		for i := 0; i < t.NumField(); i++ {
 			f := t.Field(i)
@@ -97,7 +97,7 @@ func GetDataType(t reflect.Type) DataType {
 		return dataType
 
 	case reflect.Func:
-		dataType.Type = DataTypeFunction
+		dataType.Type = TypeFunction
 		dataType.IsVariadic = t.IsVariadic()
 		for i := 0; i < t.NumIn(); i++ {
 			dataType.Params = append(dataType.Params, GetDataType(t.In(i)))
@@ -108,7 +108,7 @@ func GetDataType(t reflect.Type) DataType {
 		return dataType
 
 	case reflect.Interface:
-		dataType.Type = DataTypeInterface
+		dataType.Type = TypeInterface
 		dataType.Methods = DataTypes{}
 		for i := 0; i < t.NumMethod(); i++ {
 			m := t.Method(i)

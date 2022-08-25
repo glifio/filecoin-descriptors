@@ -75,7 +75,7 @@ func main() {
 		// State reflection
 		stateType := reflect.TypeOf(reflectableActor.State)
 		stateDataType := GetDataType(stateType)
-		if stateDataType.Type != DataTypeObject {
+		if stateDataType.Type != TypeObject {
 			log.Fatalf("%s actor state is not an object", name)
 		}
 

@@ -20,15 +20,15 @@ type DataType struct {
 }
 
 const (
-	DataTypeBool      = "bool"
-	DataTypeNumber    = "number"
-	DataTypeString    = "string"
-	DataTypeMap       = "map"
-	DataTypeArray     = "array"
-	DataTypeChan      = "channel"
-	DataTypeObject    = "object"
-	DataTypeFunction  = "function"
-	DataTypeInterface = "interface"
+	TypeBool      = "bool"
+	TypeNumber    = "number"
+	TypeString    = "string"
+	TypeMap       = "map"
+	TypeArray     = "array"
+	TypeChan      = "channel"
+	TypeObject    = "object"
+	TypeFunction  = "function"
+	TypeInterface = "interface"
 )
 
 type ActorMethods = map[string]ActorMethod
