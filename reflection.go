@@ -117,5 +117,6 @@ func GetDataType(t reflect.Type) DataType {
 		return dataType
 	}
 
+	// Unhandled type
 	panic(fmt.Sprintf("Unhandled type with string: %s, name: %s, kind: %s", t.String(), t.Name(), t.Kind().String()))
 }
