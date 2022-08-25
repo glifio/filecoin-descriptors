@@ -11,15 +11,9 @@ import (
 	"reflect"
 )
 
-var networks = []Network{
-	{
-		Code: "t",
-		Url:  "https://api.calibration.node.glif.io",
-	},
-	{
-		Code: "f",
-		Url:  "https://api.node.glif.io",
-	},
+var apiUrls = []string{
+	"https://api.node.glif.io",
+	"https://api.calibration.node.glif.io",
 }
 
 func main() {
@@ -33,14 +27,14 @@ func main() {
 	}
 
 	/*
-	 * Get actor codes
+	 * Actor codes
 	 */
 
-	for _, network := range networks {
+	for _, url := range apiUrls {
 
 		// Open Lotus API for network
 		var lotus Lotus
-		if err := lotus.Open(network); err != nil {
+		if err := lotus.Open(url); err != nil {
 			log.Fatalf("Failed to start Lotus API: %s", err)
 		}
 		defer lotus.Close()
