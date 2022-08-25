@@ -1,14 +1,8 @@
 package main
 
-type NetworkCode = string
-type Network struct {
-	Code NetworkCode
-	Url  string
-}
-
 type ActorName = string
 type ActorCode = string
-type ActorCodeMap = map[ActorName]ActorCode
+type ActorCodes = map[ActorName]ActorCode
 
 type PropName = string
 type DataTypes = map[PropName]DataType
