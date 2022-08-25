@@ -40,14 +40,14 @@ func main() {
 		defer lotus.Close()
 
 		// Retrieve actor codes from Lotus
-		actorCodeMap, err := lotus.GetActorCodeMap()
+		actorCodes, err := lotus.GetActorCodes()
 		if err != nil {
 			log.Fatalf("Failed to get actor codes: %v", err)
 		}
 
 		// Print actor codes
 		fmt.Printf("Network: %s\n", network.Code)
-		for name, code := range actorCodeMap {
+		for name, code := range actorCodes {
 			fmt.Printf("Actor: %s, Code: %s\n", name, code)
 		}
 		fmt.Print("\n")
