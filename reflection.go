@@ -40,7 +40,7 @@ func GetDataType(t reflect.Type) DataType {
 
 	case cidType.String():
 		dataType.Type = DataTypeObject
-		dataType.Children = DataTypeMap{}
+		dataType.Children = DataTypes{}
 		dataType.Children["/"] = DataType{Name: "CidString", Type: DataTypeString}
 		return dataType
 	}
@@ -65,6 +65,21 @@ func GetDataType(t reflect.Type) DataType {
 		dataType.Type = DataTypeString
 		return dataType
 
+	case reflect.Chan:
+		containsType := GetDataType(t.Elem())
+		dataType.Type = DataTypeChan
+		dataType.ChanDir = t.ChanDir().String()
+		dataType.Contains = &containsType
+		return dataType
+
+	case reflect.Map:
+		keyType := GetDataType(t.Key())
+		containsType := GetDataType(t.Elem())
+		dataType.Type = DataTypeMap
+		dataType.Key = &keyType
+		dataType.Contains = &containsType
+		return dataType
+
 	case reflect.Array, reflect.Slice:
 		containsType := GetDataType(t.Elem())
 		dataType.Name = "[]" + containsType.Name
@@ -74,7 +89,7 @@ func GetDataType(t reflect.Type) DataType {
 
 	case reflect.Struct:
 		dataType.Type = DataTypeObject
-		dataType.Children = DataTypeMap{}
+		dataType.Children = DataTypes{}
 		for i := 0; i < t.NumField(); i++ {
 			f := t.Field(i)
 			dataType.Children[f.Name] = GetDataType(f.Type)
@@ -94,7 +109,11 @@ func GetDataType(t reflect.Type) DataType {
 
 	case reflect.Interface:
 		dataType.Type = DataTypeInterface
-		fmt.Printf("Unhandled interface reflection for: %s\n", t.String())
+		dataType.Methods = DataTypes{}
+		for i := 0; i < t.NumMethod(); i++ {
+			m := t.Method(i)
+			dataType.Methods[m.Name] = GetDataType(m.Type)
+		}
 		return dataType
 	}
 

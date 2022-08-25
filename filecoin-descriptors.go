@@ -1,58 +1,75 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"log"
 	"os"
+	"runtime"
+	"strings"
 
 	"reflect"
+
+	"github.com/filecoin-project/lotus/node/modules/dtypes"
 )
 
-var networks = []Network{
-	{
-		Code: "t",
-		Url:  "https://api.calibration.node.glif.io",
-	},
-	{
-		Code: "f",
-		Url:  "https://api.node.glif.io",
-	},
+var apiUrls = []string{
+	"https://api.node.glif.io",
+	"https://api.calibration.node.glif.io",
 }
 
 func main() {
 	/*
-	 * Get actor codes
+	 * Preparation
 	 */
 
-	for _, network := range networks {
+	// Create output directory if not exists
+	if err := os.MkdirAll("output", os.ModePerm); err != nil {
+		log.Fatalf("Failed to create output directory: %v", err)
+	}
+
+	/*
+	 * Actor codes
+	 */
+
+	var networkActorCodes = map[dtypes.NetworkName]ActorCodes{}
+
+	for _, url := range apiUrls {
 
 		// Open Lotus API for network
 		var lotus Lotus
-		if err := lotus.Open(network); err != nil {
+		if err := lotus.Open(url); err != nil {
 			log.Fatalf("Failed to start Lotus API: %s", err)
 		}
 		defer lotus.Close()
 
+		// Retrieve network name from Lotus
+		networkName, err := lotus.api.StateNetworkName(context.Background())
+		if err != nil {
+			log.Fatalf("Failed to get network name: %s", err)
+		}
+
 		// Retrieve actor codes from Lotus
-		actorCodeMap, err := lotus.GetActorCodeMap()
+		actorCodes, err := lotus.GetActorCodes()
 		if err != nil {
 			log.Fatalf("Failed to get actor codes: %v", err)
 		}
 
-		// Print actor codes
-		fmt.Printf("Network: %s\n", network.Code)
-		for name, code := range actorCodeMap {
-			fmt.Printf("Actor: %s, Code: %s\n", name, code)
-		}
-		fmt.Print("\n")
+		// Store actor codes in map
+		networkActorCodes[networkName] = actorCodes
+	}
+
+	// Write actor codes
+	if err := writeJsonFile(networkActorCodes, "actor-codes"); err != nil {
+		log.Fatalf("Failed to write actor codes to JSON file: %v", err)
 	}
 
 	/*
-	 * Get actor descriptors
+	 * Actor descriptors
 	 */
 
-	var actorDescriptorMap = ActorDescriptorMap{}
+	var actorDescriptors = ActorDescriptors{}
 	for name, reflectableActor := range reflectableActors {
 
 		// State reflection
@@ -63,13 +80,18 @@ func main() {
 		}
 
 		// Methods reflection
-		var actorMethodMap = ActorMethodMap{}
+		var actorMethods = ActorMethods{}
 		for key, method := range reflectableActor.Methods {
 			var actorMethod ActorMethod
 			methodType := reflect.TypeOf(method)
 			methodDataType := GetDataType(methodType)
 
-			// Get method parameter
+			// Set method name
+			fullName := runtime.FuncForPC(reflect.ValueOf(method).Pointer()).Name()
+			nameParts := strings.Split(fullName, ".")
+			actorMethod.Name = nameParts[len(nameParts)-1]
+
+			// Set method parameter
 			paramsCount := len(methodDataType.Params)
 			if paramsCount != 3 {
 				log.Fatalf("%s actor method %s has %d parameters, expected 3", name, method, paramsCount)
@@ -84,7 +106,7 @@ func main() {
 			}
 			actorMethod.Param = methodDataType.Params[2]
 
-			// Get method return value
+			// Set method return value
 			returnsCount := len(methodDataType.Returns)
 			if returnsCount != 1 {
 				log.Fatalf("%s actor method %s has %d return values, expected 1", name, method, returnsCount)
@@ -92,38 +114,47 @@ func main() {
 			actorMethod.Return = methodDataType.Returns[0]
 
 			// Store method in map
-			actorMethodMap[key] = actorMethod
+			actorMethods[key] = actorMethod
 		}
 
 		// Set actor descriptor
-		actorDescriptorMap[name] = ActorDescriptor{
+		actorDescriptors[name] = ActorDescriptor{
 			State:   stateDataType.Children,
-			Methods: actorMethodMap,
+			Methods: actorMethods,
 		}
 	}
 
-	// Marshal actor descriptors to JSON
-	actorDescriptorJson, err := json.MarshalIndent(actorDescriptorMap, "", "  ")
-	if err != nil {
-		log.Fatalf("Failed to marshal actor descriptors to JSON: %v", err)
+	// Write actor descriptors to JSON file
+	if err := writeJsonFile(actorDescriptors, "actor-descriptors"); err != nil {
+		log.Fatalf("Failed to write actor descriptors to JSON file: %v", err)
 	}
 
-	// Create output directory
-	if err = os.MkdirAll("output", os.ModePerm); err != nil {
-		log.Fatalf("Failed to create output directory: %v", err)
+	/*
+	 * Done
+	 */
+
+	fmt.Println("Done")
+}
+
+func writeJsonFile(data interface{}, filename string) error {
+
+	// Marshal data to JSON
+	dataJson, err := json.MarshalIndent(data, "", "  ")
+	if err != nil {
+		return err
 	}
 
-	// Create file for actor descriptors
-	f, err := os.Create("output/actor-descriptors.json")
+	// Create file
+	f, err := os.Create(fmt.Sprintf("output/%s.json", filename))
 	if err != nil {
-		log.Fatalf("Failed to create actor descriptors file: %v", err)
+		return err
 	}
 	defer f.Close()
 
-	// Write actor descriptors to file
-	if _, err = f.Write(actorDescriptorJson); err != nil {
-		log.Fatalf("Failed to write actor descriptors to file: %v", err)
+	// Write file
+	if _, err = f.Write(dataJson); err != nil {
+		return err
 	}
 
-	fmt.Println("Successfully generated actor descriptors file")
+	return nil
 }
