@@ -44,7 +44,7 @@ type ActorMethod = struct {
 	Return DataType
 }
 
-type ActorMethodMap = map[string]ActorMethod
+type ActorMethodMap = map[uint64]ActorMethod
 
 type ActorDescriptor struct {
 	State   DataTypeMap

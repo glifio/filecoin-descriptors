@@ -86,7 +86,7 @@ func main() {
 		if name != "system" {
 			emptyType := reflect.TypeOf((*abi.EmptyValue)(nil))
 			emptyDataType := GetDataType(emptyType)
-			actorMethodMap["0"] = ActorMethod{
+			actorMethodMap[0] = ActorMethod{
 				Name:   "Send",
 				Param:  emptyDataType,
 				Return: emptyDataType,
