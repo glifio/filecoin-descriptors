@@ -10,6 +10,8 @@ import (
 	"strings"
 
 	"reflect"
+
+	"github.com/filecoin-project/go-state-types/abi"
 )
 
 var apiUrls = []string{
@@ -79,6 +81,19 @@ func main() {
 
 		// Methods reflection
 		var actorMethodMap = ActorMethodMap{}
+
+		// Add Send method
+		if name != "system" {
+			emptyType := reflect.TypeOf((*abi.EmptyValue)(nil))
+			emptyDataType := GetDataType(emptyType)
+			actorMethodMap["0"] = ActorMethod{
+				Name:   "Send",
+				Param:  emptyDataType,
+				Return: emptyDataType,
+			}
+		}
+
+		// Iterate over actor methods
 		for key, method := range reflectableActor.Methods {
 			var actorMethod ActorMethod
 			methodType := reflect.TypeOf(method)
