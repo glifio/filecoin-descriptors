@@ -12,7 +12,7 @@ type ActorCodeMap = map[ActorName]ActorCode
 type NetworkActorCodeMap = map[dtypes.NetworkName]ActorCodeMap
 
 const (
-	TypeBool      = "bool"
+	TypeBool      = "boolean"
 	TypeNumber    = "number"
 	TypeString    = "string"
 	TypeMap       = "map"
