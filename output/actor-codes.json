@@ -26,17 +26,17 @@
     "verifiedregistry": "bafk2bzaceb3zbkjz3auizmoln2unmxep7dyfcmsre64vnqfhdyh7rkqfoxlw4"
   },
   "wallabynet": {
-    "account": "bafk2bzaceduxzx7iz4ov7dvjnmimydefdt4hxbnrq6xyj7rafp6mx5bvjlnuw",
-    "cron": "bafk2bzaced5nlwr2scq7upethw4fml4mtodpipd6ltf4hotpofl2av6jsouv4",
-    "evm": "bafk2bzaceda6ch4cjae7covrcf7pk5ic7qc2itdv7f2hcpypqfbxzpkcqcvto",
-    "init": "bafk2bzacechjgohnzdj5ndxey6av4tksxftqhkxiqv62r7ekq6w4jmlt3dedw",
-    "multisig": "bafk2bzaceaozlaqbk6ufiqwktug52u45jnrhkoa232i2hipgwnqylou6ae5ps",
-    "paymentchannel": "bafk2bzacedrvtrxhbv7acei64v4sdnrpdidfdniywhyvqfi54qycj6afe542a",
-    "reward": "bafk2bzacecomgsz5nw5csrsmozcopzr6ybuokivtc46hck7hndhqzfqo5vzbi",
-    "storagemarket": "bafk2bzacecmjjzkoyil7hhu4rhwops32g24qcjx4nwdecn2nsjcww5jawlapy",
-    "storageminer": "bafk2bzacedlalvdvee3jxeyekt65aeoh7ogzyl4ljkacz3sjvlvle6ywwtu5e",
-    "storagepower": "bafk2bzaceabxu46b5bqysw2lyyshotvc4n26yshj3jtnqhrhjqodnvbgeja3s",
-    "system": "bafk2bzaced4h2mz2zztppuuwqtjpdccnrxinm6bcy2ixll5yxqkm4jwtlwoeg",
-    "verifiedregistry": "bafk2bzacec5ca5feawf4dgdq6kg6pdv4z2qprleft2zefzn5dlekpel2clnx6"
+    "account": "bafk2bzaceayl6hs7cgr57cfaxurxgw37kbcmgaskka6k2fr2gl4tpd2t7ti6c",
+    "cron": "bafk2bzacea5ffeopy46kb64h55z6kw4iaxrzunysnhdwp7vciywi45w3wa4yo",
+    "evm": "bafk2bzacecexlftjkmtigpxl4ecsfyj45aifczzyzwafld26r73xibk6upfeq",
+    "init": "bafk2bzaceb43oafx67nygixjw67c2pnonv3iqfi6zyw4jeyezoresiptdjzb6",
+    "multisig": "bafk2bzacedri5wfe3dfw2w3bxsdlcehfpl4ataebpy6rjulvizepcijavls3s",
+    "paymentchannel": "bafk2bzacecqxz3rafayct4qsed27wjsdv2ef2b3g2bsapkesaadv43xtlt64m",
+    "reward": "bafk2bzaceblhswne4ssyn5ivcbw7qb5ihe6rc4h4pdsgn4placm3u7bldr6cy",
+    "storagemarket": "bafk2bzacedpk7xzldibyes4gppdte4e67epkhrhrkylvbntbukk5rmsj3rebk",
+    "storageminer": "bafk2bzacecnhogfgcodepv655tpgr2v3sekhwpi5xopkbtpmfh7aizfogoosk",
+    "storagepower": "bafk2bzacedsucvtdmnmlnagljl4q4rmirzhbwuqkr2ljzish5unfkexcegvgo",
+    "system": "bafk2bzaceclorg6jsupdep3tlxicd4lyodfurgbiy5n22lst6hrgt37raq7fc",
+    "verifiedregistry": "bafk2bzacecpmf44egafsc7mj2znt5tt47hlvy7euhuwktc2elgfnmatmlig2u"
   }
 }
