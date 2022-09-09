@@ -4,7 +4,6 @@ import "github.com/filecoin-project/lotus/node/modules/dtypes"
 
 type ActorName = string
 type ActorCode = string
-type MethodNum = string
 type PropName = string
 
 type ActorCodeMap = map[ActorName]ActorCode
