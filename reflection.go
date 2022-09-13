@@ -82,7 +82,14 @@ func GetDataType(t reflect.Type) DataType {
 
 	case reflect.Array, reflect.Slice:
 		containsType := GetDataType(t.Elem())
-		dataType.Name = "[]" + containsType.Name
+
+		// uint8 arrays are returned from
+		// lotus as base64 encoded strings
+		if containsType.Name == "uint8" {
+			dataType.Type = TypeString
+			return dataType
+		}
+
 		dataType.Type = TypeArray
 		dataType.Contains = &containsType
 		return dataType
