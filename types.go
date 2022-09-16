@@ -1,6 +1,9 @@
 package main
 
-import "github.com/filecoin-project/lotus/node/modules/dtypes"
+import (
+	"github.com/filecoin-project/lotus/node/modules/dtypes"
+	"github.com/iancoleman/orderedmap"
+)
 
 type ActorName = string
 type ActorCode = string
@@ -35,7 +38,7 @@ type DataType struct {
 	ChanDir    string      `json:",omitempty"` // For channel type
 }
 
-type DataTypeMap = map[PropName]DataType
+type DataTypeMap = *orderedmap.OrderedMap
 
 type ActorMethod = struct {
 	Name   string

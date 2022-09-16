@@ -7,6 +7,7 @@ import (
 
 	"github.com/filecoin-project/go-address"
 	"github.com/filecoin-project/go-bitfield"
+	"github.com/iancoleman/orderedmap"
 	"github.com/ipfs/go-cid"
 )
 
@@ -40,8 +41,9 @@ func GetDataType(t reflect.Type) DataType {
 
 	case cidType.String():
 		dataType.Type = TypeObject
-		dataType.Children = DataTypeMap{}
-		dataType.Children["/"] = DataType{Name: "CidString", Type: TypeString}
+		dataType.Children = orderedmap.New()
+		dataType.Children.SetEscapeHTML(false)
+		dataType.Children.Set("/", DataType{Name: "CidString", Type: TypeString})
 		return dataType
 	}
 
@@ -96,10 +98,11 @@ func GetDataType(t reflect.Type) DataType {
 
 	case reflect.Struct:
 		dataType.Type = TypeObject
-		dataType.Children = DataTypeMap{}
+		dataType.Children = orderedmap.New()
+		dataType.Children.SetEscapeHTML(false)
 		for i := 0; i < t.NumField(); i++ {
 			f := t.Field(i)
-			dataType.Children[f.Name] = GetDataType(f.Type)
+			dataType.Children.Set(f.Name, GetDataType(f.Type))
 		}
 		return dataType
 
@@ -116,10 +119,11 @@ func GetDataType(t reflect.Type) DataType {
 
 	case reflect.Interface:
 		dataType.Type = TypeInterface
-		dataType.Methods = DataTypeMap{}
+		dataType.Methods = orderedmap.New()
+		dataType.Methods.SetEscapeHTML(false)
 		for i := 0; i < t.NumMethod(); i++ {
 			m := t.Method(i)
-			dataType.Methods[m.Name] = GetDataType(m.Type)
+			dataType.Methods.Set(m.Name, GetDataType(m.Type))
 		}
 		return dataType
 	}
