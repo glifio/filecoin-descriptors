@@ -17,6 +17,7 @@ const (
 	TypeBool      = "boolean"
 	TypeNumber    = "number"
 	TypeString    = "string"
+	TypeBytes     = "bytes"
 	TypeMap       = "map"
 	TypeArray     = "array"
 	TypeChan      = "channel"
