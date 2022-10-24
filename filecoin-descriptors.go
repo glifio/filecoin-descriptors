@@ -17,7 +17,7 @@ import (
 var apiUrls = []string{
 	"https://api.node.glif.io",
 	"https://api.calibration.node.glif.io",
-	"https://wallaby.dev.node.glif.io/archive/lotus/rpc/v0",
+	"https://wallaby.node.glif.io/rpc/v0",
 }
 
 func main() {
