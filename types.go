@@ -41,7 +41,7 @@ type DataType struct {
 
 type DataTypeMap = *orderedmap.OrderedMap
 
-type ActorMethod = struct {
+type ActorMethod struct {
 	Name   string
 	Param  DataType
 	Return DataType
