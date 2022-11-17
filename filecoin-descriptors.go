@@ -74,10 +74,12 @@ func main() {
 	for name, reflectableActor := range reflectableActors {
 
 		// State reflection
-		stateType := reflect.TypeOf(reflectableActor.State)
-		stateDataType := GetDataType(stateType)
-		if stateDataType.Type != TypeObject {
-			log.Fatalf("%s actor state is not an object", name)
+		var actorState DataTypeMap = nil
+		if stateType := reflect.TypeOf(reflectableActor.State); stateType != nil {
+			stateDataType := GetDataType(stateType)
+			if stateDataType.Type != TypeObject {
+				log.Fatalf("%s actor state is not an object", name)
+			}
 		}
 
 		// Methods reflection
@@ -98,34 +100,43 @@ func main() {
 		for key, method := range reflectableActor.Methods {
 			var actorMethod ActorMethod
 			methodType := reflect.TypeOf(method)
-			methodDataType := GetDataType(methodType)
 
-			// Set method name
-			fullName := runtime.FuncForPC(reflect.ValueOf(method).Pointer()).Name()
-			nameParts := strings.Split(fullName, ".")
-			actorMethod.Name = nameParts[len(nameParts)-1]
+			if methodType.Name() == "CustomMethod" {
+				var customMethod = method.(CustomMethod)
+				actorMethod.Name = customMethod.Name
+				actorMethod.Param = GetDataType(reflect.TypeOf(customMethod.Param))
+				actorMethod.Return = GetDataType(reflect.TypeOf(customMethod.Return))
+			} else {
+				// Get method DataType
+				methodDataType := GetDataType(methodType)
 
-			// Set method parameter
-			paramsCount := len(methodDataType.Params)
-			if paramsCount != 3 {
-				log.Fatalf("%s actor method %s has %d parameters, expected 3", name, method, paramsCount)
-			}
-			firstParamName := methodDataType.Params[0].Name
-			if firstParamName != "Actor" {
-				log.Fatalf("%s actor method %s has %s as first parameter, should be Actor", name, method, firstParamName)
-			}
-			secondParamName := methodDataType.Params[1].Name
-			if secondParamName != "Runtime" {
-				log.Fatalf("%s actor method %s has %s as first parameter, should be Runtime", name, method, secondParamName)
-			}
-			actorMethod.Param = methodDataType.Params[2]
+				// Set method name
+				fullName := runtime.FuncForPC(reflect.ValueOf(method).Pointer()).Name()
+				nameParts := strings.Split(fullName, ".")
+				actorMethod.Name = nameParts[len(nameParts)-1]
 
-			// Set method return value
-			returnsCount := len(methodDataType.Returns)
-			if returnsCount != 1 {
-				log.Fatalf("%s actor method %s has %d return values, expected 1", name, method, returnsCount)
+				// Set method parameter
+				paramsCount := len(methodDataType.Params)
+				if paramsCount != 3 {
+					log.Fatalf("%s actor method %s has %d parameters, expected 3", name, method, paramsCount)
+				}
+				firstParamName := methodDataType.Params[0].Name
+				if firstParamName != "Actor" {
+					log.Fatalf("%s actor method %s has %s as first parameter, should be Actor", name, method, firstParamName)
+				}
+				secondParamName := methodDataType.Params[1].Name
+				if secondParamName != "Runtime" {
+					log.Fatalf("%s actor method %s has %s as first parameter, should be Runtime", name, method, secondParamName)
+				}
+				actorMethod.Param = methodDataType.Params[2]
+
+				// Set method return value
+				returnsCount := len(methodDataType.Returns)
+				if returnsCount != 1 {
+					log.Fatalf("%s actor method %s has %d return values, expected 1", name, method, returnsCount)
+				}
+				actorMethod.Return = methodDataType.Returns[0]
 			}
-			actorMethod.Return = methodDataType.Returns[0]
 
 			// Store method in map
 			actorMethodMap[key] = actorMethod
@@ -133,7 +144,7 @@ func main() {
 
 		// Set actor descriptor
 		actorDescriptorMap[name] = ActorDescriptor{
-			State:   stateDataType.Children,
+			State:   actorState,
 			Methods: actorMethodMap,
 		}
 	}

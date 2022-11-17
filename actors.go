@@ -3,6 +3,7 @@ package main
 import (
 	accountState "github.com/filecoin-project/go-state-types/builtin/v8/account"
 	cronState "github.com/filecoin-project/go-state-types/builtin/v8/cron"
+	eamState "github.com/filecoin-project/go-state-types/builtin/v8/eam"
 	initState "github.com/filecoin-project/go-state-types/builtin/v8/init"
 	marketState "github.com/filecoin-project/go-state-types/builtin/v8/market"
 	minerState "github.com/filecoin-project/go-state-types/builtin/v8/miner"
@@ -29,6 +30,12 @@ type ReflectableActor struct {
 	Methods map[uint64]interface{}
 }
 
+type CustomMethod struct {
+	Name   string
+	Param  interface{}
+	Return interface{}
+}
+
 var reflectableActors = map[ActorName]ReflectableActor{
 	"account": {
 		State: (*accountState.State)(nil),
@@ -42,6 +49,21 @@ var reflectableActors = map[ActorName]ReflectableActor{
 		Methods: map[uint64]interface{}{
 			1: cronActor.Actor.Constructor,
 			2: cronActor.Actor.EpochTick,
+		},
+	},
+	"eam": {
+		State: nil,
+		Methods: map[uint64]interface{}{
+			2: CustomMethod{
+				Name:   "Create",
+				Param:  (*eamState.CreateParams)(nil),
+				Return: (*eamState.CreateReturn)(nil),
+			},
+			3: CustomMethod{
+				Name:   "Create2",
+				Param:  (*eamState.Create2Params)(nil),
+				Return: (*eamState.Create2Return)(nil),
+			},
 		},
 	},
 	"init": {
