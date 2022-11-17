@@ -80,6 +80,7 @@ func main() {
 			if stateDataType.Type != TypeObject {
 				log.Fatalf("%s actor state is not an object", name)
 			}
+			actorState = stateDataType.Children
 		}
 
 		// Methods reflection

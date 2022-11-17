@@ -4,6 +4,7 @@ import (
 	accountState "github.com/filecoin-project/go-state-types/builtin/v8/account"
 	cronState "github.com/filecoin-project/go-state-types/builtin/v8/cron"
 	eamState "github.com/filecoin-project/go-state-types/builtin/v8/eam"
+	evmState "github.com/filecoin-project/go-state-types/builtin/v8/evm"
 	initState "github.com/filecoin-project/go-state-types/builtin/v8/init"
 	marketState "github.com/filecoin-project/go-state-types/builtin/v8/market"
 	minerState "github.com/filecoin-project/go-state-types/builtin/v8/miner"
@@ -65,6 +66,10 @@ var reflectableActors = map[ActorName]ReflectableActor{
 				Return: (*eamState.Create2Return)(nil),
 			},
 		},
+	},
+	"evm": {
+		State:   (*evmState.State)(nil),
+		Methods: map[uint64]interface{}{},
 	},
 	"init": {
 		State: (*initState.State)(nil),
