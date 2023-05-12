@@ -1,10 +1,12 @@
 package main
 
 import (
+	"github.com/filecoin-project/go-address"
 	"github.com/filecoin-project/go-state-types/abi"
 	"github.com/filecoin-project/go-state-types/builtin"
 	accountState "github.com/filecoin-project/go-state-types/builtin/v11/account"
 	cronState "github.com/filecoin-project/go-state-types/builtin/v11/cron"
+	datacapState "github.com/filecoin-project/go-state-types/builtin/v11/datacap"
 	eamState "github.com/filecoin-project/go-state-types/builtin/v11/eam"
 	evmState "github.com/filecoin-project/go-state-types/builtin/v11/evm"
 	initState "github.com/filecoin-project/go-state-types/builtin/v11/init"
@@ -52,6 +54,16 @@ var reflectableActors = map[ActorName]ReflectableActor{
 		Methods: map[abi.MethodNum]interface{}{
 			1: cronActor.Actor.Constructor,
 			2: cronActor.Actor.EpochTick,
+		},
+	},
+	"datacap": {
+		State: (*datacapState.State)(nil),
+		Methods: map[abi.MethodNum]interface{}{
+			1: CustomMethod{
+				Name:   "Constructor",
+				Param:  (*address.Address)(nil),
+				Return: (*abi.EmptyValue)(nil),
+			},
 		},
 	},
 	"eam": {
