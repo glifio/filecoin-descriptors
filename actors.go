@@ -29,7 +29,7 @@ import (
 
 type ReflectableActor struct {
 	State   interface{}
-	Methods map[uint64]interface{}
+	Methods map[abi.MethodNum]interface{}
 }
 
 type CustomMethod struct {
@@ -41,21 +41,21 @@ type CustomMethod struct {
 var reflectableActors = map[ActorName]ReflectableActor{
 	"account": {
 		State: (*accountState.State)(nil),
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
 			1: accountActor.Actor.Constructor,
 			2: accountActor.Actor.PubkeyAddress,
 		},
 	},
 	"cron": {
 		State: (*cronState.State)(nil),
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
 			1: cronActor.Actor.Constructor,
 			2: cronActor.Actor.EpochTick,
 		},
 	},
 	"eam": {
 		State: nil,
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
 			1: CustomMethod{
 				Name:   "Constructor",
 				Param:  (*abi.EmptyValue)(nil),
@@ -80,7 +80,7 @@ var reflectableActors = map[ActorName]ReflectableActor{
 	},
 	"ethaccount": {
 		State: nil,
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
 			1: CustomMethod{
 				Name:   "Constructor",
 				Param:  (*abi.EmptyValue)(nil),
@@ -90,7 +90,7 @@ var reflectableActors = map[ActorName]ReflectableActor{
 	},
 	"evm": {
 		State: (*evmState.State)(nil),
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
 			1: CustomMethod{
 				Name:   "Constructor",
 				Param:  (*evmState.ConstructorParams)(nil),
@@ -130,14 +130,14 @@ var reflectableActors = map[ActorName]ReflectableActor{
 	},
 	"init": {
 		State: (*initState.State)(nil),
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
 			1: initActor.Actor.Constructor,
 			2: initActor.Actor.Exec,
 		},
 	},
 	"multisig": {
 		State: (*multisigState.State)(nil),
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
 			1: multisigActor.Actor.Constructor,
 			2: multisigActor.Actor.Propose,
 			3: multisigActor.Actor.Approve,
@@ -151,7 +151,7 @@ var reflectableActors = map[ActorName]ReflectableActor{
 	},
 	"paymentchannel": {
 		State: (*paychState.State)(nil),
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
 			1: (*paychActor.Actor).Constructor,
 			2: paychActor.Actor.UpdateChannelState,
 			3: paychActor.Actor.Settle,
@@ -160,7 +160,7 @@ var reflectableActors = map[ActorName]ReflectableActor{
 	},
 	"reward": {
 		State: (*rewardState.State)(nil),
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
 			1: rewardActor.Actor.Constructor,
 			2: rewardActor.Actor.AwardBlockReward,
 			3: rewardActor.Actor.ThisEpochReward,
@@ -169,7 +169,7 @@ var reflectableActors = map[ActorName]ReflectableActor{
 	},
 	"storagemarket": {
 		State: (*marketState.State)(nil),
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
 			1: marketActor.Actor.Constructor,
 			2: marketActor.Actor.AddBalance,
 			3: marketActor.Actor.WithdrawBalance,
@@ -183,7 +183,7 @@ var reflectableActors = map[ActorName]ReflectableActor{
 	},
 	"storageminer": {
 		State: (*minerState.State)(nil),
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
 			1:  minerActor.Actor.Constructor,
 			2:  minerActor.Actor.ControlAddresses,
 			3:  minerActor.Actor.ChangeWorkerAddress,
@@ -215,7 +215,7 @@ var reflectableActors = map[ActorName]ReflectableActor{
 	},
 	"storagepower": {
 		State: (*powerState.State)(nil),
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
 			1: powerActor.Actor.Constructor,
 			2: powerActor.Actor.CreateMiner,
 			3: powerActor.Actor.UpdateClaimedPower,
@@ -228,11 +228,11 @@ var reflectableActors = map[ActorName]ReflectableActor{
 	},
 	"system": {
 		State:   (*systemState.State)(nil),
-		Methods: map[uint64]interface{}{},
+		Methods: map[abi.MethodNum]interface{}{},
 	},
 	"verifiedregistry": {
 		State: (*verifregState.State)(nil),
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
 			1: verifregActor.Actor.Constructor,
 			2: verifregActor.Actor.AddVerifier,
 			3: verifregActor.Actor.RemoveVerifier,
