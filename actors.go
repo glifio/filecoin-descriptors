@@ -64,6 +64,81 @@ var reflectableActors = map[ActorName]ReflectableActor{
 				Param:  (*address.Address)(nil),
 				Return: (*abi.EmptyValue)(nil),
 			},
+			builtin.MustGenerateFRCMethodNum("Mint"): CustomMethod{
+				Name:   "Mint",
+				Param:  (*datacapState.MintParams)(nil),
+				Return: (*datacapState.MintReturn)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("Destroy"): CustomMethod{
+				Name:   "Destroy",
+				Param:  (*datacapState.DestroyParams)(nil),
+				Return: (*datacapState.BurnReturn)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("Name"): CustomMethod{
+				Name:   "Name",
+				Param:  (*abi.EmptyValue)(nil),
+				Return: (*abi.CborString)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("Symbol"): CustomMethod{
+				Name:   "Symbol",
+				Param:  (*abi.EmptyValue)(nil),
+				Return: (*abi.CborString)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("TotalSupply"): CustomMethod{
+				Name:   "TotalSupply",
+				Param:  (*abi.EmptyValue)(nil),
+				Return: (*abi.TokenAmount)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("Balance"): CustomMethod{
+				Name:   "Balance",
+				Param:  (*address.Address)(nil),
+				Return: (*abi.TokenAmount)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("Transfer"): CustomMethod{
+				Name:   "Transfer",
+				Param:  (*datacapState.TransferFromParams)(nil),
+				Return: (*datacapState.TransferFromReturn)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("TransferFrom"): CustomMethod{
+				Name:   "TransferFrom",
+				Param:  (*datacapState.TransferFromParams)(nil),
+				Return: (*datacapState.TransferFromReturn)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("IncreaseAllowance"): CustomMethod{
+				Name:   "IncreaseAllowance",
+				Param:  (*datacapState.IncreaseAllowanceParams)(nil),
+				Return: (*abi.TokenAmount)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("DecreaseAllowance"): CustomMethod{
+				Name:   "DecreaseAllowance",
+				Param:  (*datacapState.DecreaseAllowanceParams)(nil),
+				Return: (*abi.TokenAmount)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("RevokeAllowance"): CustomMethod{
+				Name:   "RevokeAllowance",
+				Param:  (*datacapState.RevokeAllowanceParams)(nil),
+				Return: (*abi.TokenAmount)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("Burn"): CustomMethod{
+				Name:   "Burn",
+				Param:  (*datacapState.BurnParams)(nil),
+				Return: (*datacapState.BurnReturn)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("BurnFrom"): CustomMethod{
+				Name:   "BurnFrom",
+				Param:  (*datacapState.BurnFromParams)(nil),
+				Return: (*datacapState.BurnFromReturn)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("Allowance"): CustomMethod{
+				Name:   "Allowance",
+				Param:  (*datacapState.GetAllowanceParams)(nil),
+				Return: (*abi.TokenAmount)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("Granularity"): CustomMethod{
+				Name:   "Granularity",
+				Param:  (*abi.EmptyValue)(nil),
+				Return: (*datacapState.GranularityReturn)(nil),
+			},
 		},
 	},
 	"eam": {
