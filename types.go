@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/filecoin-project/go-state-types/abi"
 	"github.com/filecoin-project/lotus/node/modules/dtypes"
 	"github.com/iancoleman/orderedmap"
 )
@@ -47,7 +48,7 @@ type ActorMethod struct {
 	Return DataType
 }
 
-type ActorMethodMap = map[uint64]ActorMethod
+type ActorMethodMap = map[abi.MethodNum]ActorMethod
 
 type ActorDescriptor struct {
 	State   DataTypeMap
