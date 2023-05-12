@@ -1,8 +1,12 @@
 package main
 
 import (
+	"github.com/filecoin-project/go-address"
+	"github.com/filecoin-project/go-state-types/abi"
+	"github.com/filecoin-project/go-state-types/builtin"
 	accountState "github.com/filecoin-project/go-state-types/builtin/v11/account"
 	cronState "github.com/filecoin-project/go-state-types/builtin/v11/cron"
+	datacapState "github.com/filecoin-project/go-state-types/builtin/v11/datacap"
 	eamState "github.com/filecoin-project/go-state-types/builtin/v11/eam"
 	evmState "github.com/filecoin-project/go-state-types/builtin/v11/evm"
 	initState "github.com/filecoin-project/go-state-types/builtin/v11/init"
@@ -28,7 +32,7 @@ import (
 
 type ReflectableActor struct {
 	State   interface{}
-	Methods map[uint64]interface{}
+	Methods map[abi.MethodNum]interface{}
 }
 
 type CustomMethod struct {
@@ -40,21 +44,111 @@ type CustomMethod struct {
 var reflectableActors = map[ActorName]ReflectableActor{
 	"account": {
 		State: (*accountState.State)(nil),
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
 			1: accountActor.Actor.Constructor,
 			2: accountActor.Actor.PubkeyAddress,
 		},
 	},
 	"cron": {
 		State: (*cronState.State)(nil),
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
 			1: cronActor.Actor.Constructor,
 			2: cronActor.Actor.EpochTick,
 		},
 	},
+	"datacap": {
+		State: (*datacapState.State)(nil),
+		Methods: map[abi.MethodNum]interface{}{
+			1: CustomMethod{
+				Name:   "Constructor",
+				Param:  (*address.Address)(nil),
+				Return: (*abi.EmptyValue)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("Mint"): CustomMethod{
+				Name:   "Mint",
+				Param:  (*datacapState.MintParams)(nil),
+				Return: (*datacapState.MintReturn)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("Destroy"): CustomMethod{
+				Name:   "Destroy",
+				Param:  (*datacapState.DestroyParams)(nil),
+				Return: (*datacapState.BurnReturn)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("Name"): CustomMethod{
+				Name:   "Name",
+				Param:  (*abi.EmptyValue)(nil),
+				Return: (*abi.CborString)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("Symbol"): CustomMethod{
+				Name:   "Symbol",
+				Param:  (*abi.EmptyValue)(nil),
+				Return: (*abi.CborString)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("TotalSupply"): CustomMethod{
+				Name:   "TotalSupply",
+				Param:  (*abi.EmptyValue)(nil),
+				Return: (*abi.TokenAmount)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("Balance"): CustomMethod{
+				Name:   "Balance",
+				Param:  (*address.Address)(nil),
+				Return: (*abi.TokenAmount)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("Transfer"): CustomMethod{
+				Name:   "Transfer",
+				Param:  (*datacapState.TransferFromParams)(nil),
+				Return: (*datacapState.TransferFromReturn)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("TransferFrom"): CustomMethod{
+				Name:   "TransferFrom",
+				Param:  (*datacapState.TransferFromParams)(nil),
+				Return: (*datacapState.TransferFromReturn)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("IncreaseAllowance"): CustomMethod{
+				Name:   "IncreaseAllowance",
+				Param:  (*datacapState.IncreaseAllowanceParams)(nil),
+				Return: (*abi.TokenAmount)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("DecreaseAllowance"): CustomMethod{
+				Name:   "DecreaseAllowance",
+				Param:  (*datacapState.DecreaseAllowanceParams)(nil),
+				Return: (*abi.TokenAmount)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("RevokeAllowance"): CustomMethod{
+				Name:   "RevokeAllowance",
+				Param:  (*datacapState.RevokeAllowanceParams)(nil),
+				Return: (*abi.TokenAmount)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("Burn"): CustomMethod{
+				Name:   "Burn",
+				Param:  (*datacapState.BurnParams)(nil),
+				Return: (*datacapState.BurnReturn)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("BurnFrom"): CustomMethod{
+				Name:   "BurnFrom",
+				Param:  (*datacapState.BurnFromParams)(nil),
+				Return: (*datacapState.BurnFromReturn)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("Allowance"): CustomMethod{
+				Name:   "Allowance",
+				Param:  (*datacapState.GetAllowanceParams)(nil),
+				Return: (*abi.TokenAmount)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("Granularity"): CustomMethod{
+				Name:   "Granularity",
+				Param:  (*abi.EmptyValue)(nil),
+				Return: (*datacapState.GranularityReturn)(nil),
+			},
+		},
+	},
 	"eam": {
 		State: nil,
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
+			1: CustomMethod{
+				Name:   "Constructor",
+				Param:  (*abi.EmptyValue)(nil),
+				Return: (*abi.EmptyValue)(nil),
+			},
 			2: CustomMethod{
 				Name:   "Create",
 				Param:  (*eamState.CreateParams)(nil),
@@ -65,22 +159,73 @@ var reflectableActors = map[ActorName]ReflectableActor{
 				Param:  (*eamState.Create2Params)(nil),
 				Return: (*eamState.Create2Return)(nil),
 			},
+			4: CustomMethod{
+				Name:   "CreateExternal",
+				Param:  (*abi.CborBytes)(nil),
+				Return: (*eamState.CreateExternalReturn)(nil),
+			},
+		},
+	},
+	"ethaccount": {
+		State: nil,
+		Methods: map[abi.MethodNum]interface{}{
+			1: CustomMethod{
+				Name:   "Constructor",
+				Param:  (*abi.EmptyValue)(nil),
+				Return: (*abi.EmptyValue)(nil),
+			},
 		},
 	},
 	"evm": {
-		State:   (*evmState.State)(nil),
-		Methods: map[uint64]interface{}{},
+		State: (*evmState.State)(nil),
+		Methods: map[abi.MethodNum]interface{}{
+			1: CustomMethod{
+				Name:   "Constructor",
+				Param:  (*evmState.ConstructorParams)(nil),
+				Return: (*abi.EmptyValue)(nil),
+			},
+			2: CustomMethod{
+				Name:   "Resurrect",
+				Param:  (*evmState.ResurrectParams)(nil),
+				Return: (*abi.EmptyValue)(nil),
+			},
+			3: CustomMethod{
+				Name:   "GetBytecode",
+				Param:  (*abi.EmptyValue)(nil),
+				Return: (*evmState.GetBytecodeReturn)(nil),
+			},
+			4: CustomMethod{
+				Name:   "GetBytecodeHash",
+				Param:  (*abi.EmptyValue)(nil),
+				Return: (*abi.CborBytes)(nil),
+			},
+			5: CustomMethod{
+				Name:   "GetStorageAt",
+				Param:  (*evmState.GetStorageAtParams)(nil),
+				Return: (*abi.CborBytes)(nil),
+			},
+			6: CustomMethod{
+				Name:   "InvokeContractDelegate",
+				Param:  (*evmState.DelegateCallParams)(nil),
+				Return: (*abi.CborBytes)(nil),
+			},
+			builtin.MustGenerateFRCMethodNum("InvokeEVM"): CustomMethod{
+				Name:   "InvokeEVM",
+				Param:  (*abi.CborBytes)(nil),
+				Return: (*abi.CborBytes)(nil),
+			},
+		},
 	},
 	"init": {
 		State: (*initState.State)(nil),
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
 			1: initActor.Actor.Constructor,
 			2: initActor.Actor.Exec,
 		},
 	},
 	"multisig": {
 		State: (*multisigState.State)(nil),
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
 			1: multisigActor.Actor.Constructor,
 			2: multisigActor.Actor.Propose,
 			3: multisigActor.Actor.Approve,
@@ -94,7 +239,7 @@ var reflectableActors = map[ActorName]ReflectableActor{
 	},
 	"paymentchannel": {
 		State: (*paychState.State)(nil),
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
 			1: (*paychActor.Actor).Constructor,
 			2: paychActor.Actor.UpdateChannelState,
 			3: paychActor.Actor.Settle,
@@ -103,7 +248,7 @@ var reflectableActors = map[ActorName]ReflectableActor{
 	},
 	"reward": {
 		State: (*rewardState.State)(nil),
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
 			1: rewardActor.Actor.Constructor,
 			2: rewardActor.Actor.AwardBlockReward,
 			3: rewardActor.Actor.ThisEpochReward,
@@ -112,7 +257,7 @@ var reflectableActors = map[ActorName]ReflectableActor{
 	},
 	"storagemarket": {
 		State: (*marketState.State)(nil),
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
 			1: marketActor.Actor.Constructor,
 			2: marketActor.Actor.AddBalance,
 			3: marketActor.Actor.WithdrawBalance,
@@ -126,7 +271,7 @@ var reflectableActors = map[ActorName]ReflectableActor{
 	},
 	"storageminer": {
 		State: (*minerState.State)(nil),
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
 			1:  minerActor.Actor.Constructor,
 			2:  minerActor.Actor.ControlAddresses,
 			3:  minerActor.Actor.ChangeWorkerAddress,
@@ -158,7 +303,7 @@ var reflectableActors = map[ActorName]ReflectableActor{
 	},
 	"storagepower": {
 		State: (*powerState.State)(nil),
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
 			1: powerActor.Actor.Constructor,
 			2: powerActor.Actor.CreateMiner,
 			3: powerActor.Actor.UpdateClaimedPower,
@@ -171,11 +316,11 @@ var reflectableActors = map[ActorName]ReflectableActor{
 	},
 	"system": {
 		State:   (*systemState.State)(nil),
-		Methods: map[uint64]interface{}{},
+		Methods: map[abi.MethodNum]interface{}{},
 	},
 	"verifiedregistry": {
 		State: (*verifregState.State)(nil),
-		Methods: map[uint64]interface{}{
+		Methods: map[abi.MethodNum]interface{}{
 			1: verifregActor.Actor.Constructor,
 			2: verifregActor.Actor.AddVerifier,
 			3: verifregActor.Actor.RemoveVerifier,
