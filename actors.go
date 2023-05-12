@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/filecoin-project/go-state-types/abi"
+	"github.com/filecoin-project/go-state-types/builtin"
 	accountState "github.com/filecoin-project/go-state-types/builtin/v11/account"
 	cronState "github.com/filecoin-project/go-state-types/builtin/v11/cron"
 	eamState "github.com/filecoin-project/go-state-types/builtin/v11/eam"
@@ -121,7 +122,7 @@ var reflectableActors = map[ActorName]ReflectableActor{
 				Param:  (*evmState.DelegateCallParams)(nil),
 				Return: (*abi.CborBytes)(nil),
 			},
-			3844450837: CustomMethod{
+			builtin.MustGenerateFRCMethodNum("InvokeEVM"): CustomMethod{
 				Name:   "InvokeEVM",
 				Param:  (*abi.CborBytes)(nil),
 				Return: (*abi.CborBytes)(nil),
