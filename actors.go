@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/filecoin-project/go-state-types/abi"
 	accountState "github.com/filecoin-project/go-state-types/builtin/v11/account"
 	cronState "github.com/filecoin-project/go-state-types/builtin/v11/cron"
 	eamState "github.com/filecoin-project/go-state-types/builtin/v11/eam"
@@ -55,6 +56,11 @@ var reflectableActors = map[ActorName]ReflectableActor{
 	"eam": {
 		State: nil,
 		Methods: map[uint64]interface{}{
+			1: CustomMethod{
+				Name:   "Constructor",
+				Param:  (*abi.EmptyValue)(nil),
+				Return: (*abi.EmptyValue)(nil),
+			},
 			2: CustomMethod{
 				Name:   "Create",
 				Param:  (*eamState.CreateParams)(nil),
@@ -64,6 +70,11 @@ var reflectableActors = map[ActorName]ReflectableActor{
 				Name:   "Create2",
 				Param:  (*eamState.Create2Params)(nil),
 				Return: (*eamState.Create2Return)(nil),
+			},
+			4: CustomMethod{
+				Name:   "CreateExternal",
+				Param:  (*abi.CborBytes)(nil),
+				Return: (*eamState.CreateExternalReturn)(nil),
 			},
 		},
 	},
