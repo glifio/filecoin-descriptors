@@ -79,8 +79,44 @@ var reflectableActors = map[ActorName]ReflectableActor{
 		},
 	},
 	"evm": {
-		State:   (*evmState.State)(nil),
-		Methods: map[uint64]interface{}{},
+		State: (*evmState.State)(nil),
+		Methods: map[uint64]interface{}{
+			1: CustomMethod{
+				Name:   "Constructor",
+				Param:  (*evmState.ConstructorParams)(nil),
+				Return: (*abi.EmptyValue)(nil),
+			},
+			2: CustomMethod{
+				Name:   "Resurrect",
+				Param:  (*evmState.ResurrectParams)(nil),
+				Return: (*abi.EmptyValue)(nil),
+			},
+			3: CustomMethod{
+				Name:   "GetBytecode",
+				Param:  (*abi.EmptyValue)(nil),
+				Return: (*evmState.GetBytecodeReturn)(nil),
+			},
+			4: CustomMethod{
+				Name:   "GetBytecodeHash",
+				Param:  (*abi.EmptyValue)(nil),
+				Return: (*abi.CborBytes)(nil),
+			},
+			5: CustomMethod{
+				Name:   "GetStorageAt",
+				Param:  (*evmState.GetStorageAtParams)(nil),
+				Return: (*abi.CborBytes)(nil),
+			},
+			6: CustomMethod{
+				Name:   "InvokeContractDelegate",
+				Param:  (*evmState.DelegateCallParams)(nil),
+				Return: (*abi.CborBytes)(nil),
+			},
+			3844450837: CustomMethod{
+				Name:   "InvokeEVM",
+				Param:  (*abi.CborBytes)(nil),
+				Return: (*abi.CborBytes)(nil),
+			},
+		},
 	},
 	"init": {
 		State: (*initState.State)(nil),
