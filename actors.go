@@ -78,6 +78,16 @@ var reflectableActors = map[ActorName]ReflectableActor{
 			},
 		},
 	},
+	"ethaccount": {
+		State: nil,
+		Methods: map[uint64]interface{}{
+			1: CustomMethod{
+				Name:   "Constructor",
+				Param:  (*abi.EmptyValue)(nil),
+				Return: (*abi.EmptyValue)(nil),
+			},
+		},
+	},
 	"evm": {
 		State: (*evmState.State)(nil),
 		Methods: map[uint64]interface{}{
