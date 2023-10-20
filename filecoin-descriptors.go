@@ -17,7 +17,6 @@ import (
 var apiUrls = []string{
 	"https://api.node.glif.io/rpc/v1",
 	"https://api.calibration.node.glif.io/rpc/v1",
-	"https://api.hyperspace.node.glif.io/rpc/v1",
 }
 
 func main() {
