@@ -2,17 +2,10 @@ package main
 
 import (
 	"github.com/filecoin-project/go-state-types/abi"
-	"github.com/filecoin-project/lotus/node/modules/dtypes"
 	"github.com/iancoleman/orderedmap"
 )
 
 type ActorName = string
-type ActorCode = string
-type PropName = string
-
-type ActorCodeMap = map[ActorName]ActorCode
-
-type NetworkActorCodeMap = map[dtypes.NetworkName]ActorCodeMap
 
 const (
 	TypeBool      = "boolean"

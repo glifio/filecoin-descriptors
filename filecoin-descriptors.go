@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -27,42 +26,6 @@ func main() {
 	// Create output directory if not exists
 	if err := os.MkdirAll("output", os.ModePerm); err != nil {
 		log.Fatalf("Failed to create output directory: %v", err)
-	}
-
-	/*
-	 * Actor codes
-	 */
-
-	var networkActorCodeMap = NetworkActorCodeMap{}
-
-	for _, url := range apiUrls {
-
-		// Open Lotus API for network
-		var lotus Lotus
-		if err := lotus.Open(url); err != nil {
-			log.Fatalf("Failed to start Lotus API: %s", err)
-		}
-		defer lotus.Close()
-
-		// Retrieve network name from Lotus
-		networkName, err := lotus.api.StateNetworkName(context.Background())
-		if err != nil {
-			log.Fatalf("Failed to get network name: %s", err)
-		}
-
-		// Retrieve actor codes from Lotus
-		actorCodeMap, err := lotus.GetActorCodeMap()
-		if err != nil {
-			log.Fatalf("Failed to get actor codes: %v", err)
-		}
-
-		// Store actor codes in map
-		networkActorCodeMap[networkName] = actorCodeMap
-	}
-
-	// Write actor codes
-	if err := writeJsonFile(networkActorCodeMap, "actor-codes"); err != nil {
-		log.Fatalf("Failed to write actor codes to JSON file: %v", err)
 	}
 
 	/*
